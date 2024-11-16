@@ -1,6 +1,7 @@
 <script lang="ts">
 	import ImagePickerCard from '$lib/components/cards/image-picker-card.svelte';
 	import ResultCard from '$lib/components/cards/result-card.svelte';
+	import Footer from '$lib/components/footer.svelte';
 	import Header from '$lib/components/header.svelte';
 
 	let images = $state<FileList>();
@@ -27,10 +28,13 @@
 	<title>{isLoading ? '[Processing...] ' : ''}Remove Biji - Hilangkan biji mu dengan mudah</title>
 </svelte:head>
 
-<main class="container mx-auto py-8">
-	<Header />
-	<div class="mt-4 flex items-start gap-4">
-		<ImagePickerCard bind:images {imagePreviews} bind:outputs bind:isLoading />
-		<ResultCard {isLoading} {outputs} {outputPreviews} />
+<main class="container mx-auto flex min-h-screen flex-col">
+	<div class="flex-grow py-8">
+		<Header />
+		<div class="mt-4 flex items-start gap-4">
+			<ImagePickerCard bind:images {imagePreviews} bind:outputs bind:isLoading />
+			<ResultCard {isLoading} {outputs} {outputPreviews} />
+		</div>
 	</div>
+	<Footer />
 </main>
