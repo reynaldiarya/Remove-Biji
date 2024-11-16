@@ -17,12 +17,11 @@ export const removeBg = async (images: FileList | undefined) => {
 		method: 'POST',
 		body: form
 	});
-	const json = await resp.json();
+	const data = await resp.json();
+
 	if (!resp.ok) {
-		throw new Error(json.message);
+		throw new Error(data.message as string);
 	}
 
-	const data: { images: string[] } = await resp.json();
-
-	return data.images;
+	return data.images as { images: string[] };
 };
