@@ -1,7 +1,16 @@
+import { limiter } from '$lib/rate-limiter';
+import { error } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
 import { removeBackground } from '@imgly/background-removal-node';
+import { env } from '$env/dynamic/private';
 
-export const POST: RequestHandler = async ({ request }) => {
+export const POST: RequestHandler = async (event) => {
+	if (env.NODE_ENV === 'production' && (await limiter.isLimited(event))) {
+		throw error(429, 'Kamu telah terlalu banyak mencoba, coba lagi nanti');
+	}
+
+	const { request } = event;
+
 	const formData = await request.formData();
 	const files = formData.getAll('image');
 

@@ -40,16 +40,20 @@
 					outputs.push(blob);
 				})
 			);
+
+			toast.success('Proses berhasil');
 		} catch (err) {
 			if (err instanceof z.ZodError) {
 				toast.error(err.errors.at(0)?.message ?? 'Proses gagal');
+			} else if (err instanceof Error) {
+				console.log(err);
+				toast.error(err.message);
 			} else {
 				toast.error('Proses gagal');
 			}
 		}
 
 		isLoading = false;
-		toast.success('Proses berhasil');
 	}
 </script>
 

@@ -3,7 +3,7 @@ import { imageSchema } from './schema/image-schema';
 export const removeBg = async (images: FileList | undefined) => {
 	if (!images) throw new Error('Tidak ada gambar yang dikirim');
 
-	const payload = imageSchema.array().safeParse(Array.from(images));
+	const payload = imageSchema.array().max(4).safeParse(Array.from(images));
 	if (!payload.success) {
 		throw payload.error;
 	}
@@ -17,8 +17,9 @@ export const removeBg = async (images: FileList | undefined) => {
 		method: 'POST',
 		body: form
 	});
+	const json = await resp.json();
 	if (!resp.ok) {
-		throw new Error(resp.statusText);
+		throw new Error(json.message);
 	}
 
 	const data: { images: string[] } = await resp.json();
