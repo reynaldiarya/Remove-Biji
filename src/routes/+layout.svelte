@@ -1,6 +1,12 @@
 <script lang="ts">
-	import '../app.css';
+	import '@fontsource/roboto/100.css';
+	import '@fontsource/roboto/300.css';
+	import '@fontsource/roboto/400.css';
+	import '@fontsource/roboto/500.css';
+	import '@fontsource/roboto/700.css';
+	import '@fontsource/roboto/900.css';
 	import { Toaster } from 'svelte-french-toast';
+	import '../app.css';
 
 	let { children } = $props();
 </script>
