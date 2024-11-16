@@ -28,10 +28,10 @@
 	<title>{isLoading ? '[Processing...] ' : ''}Remove Biji - Hilangkan biji mu dengan mudah</title>
 </svelte:head>
 
-<main class="container mx-auto flex min-h-screen flex-col">
+<main class="container mx-auto flex min-h-screen flex-col px-4 md:px-6 lg:px-8">
 	<div class="flex-grow py-8">
 		<Header />
-		<div class="mt-4 flex items-start gap-4">
+		<div class="mt-4 flex flex-wrap items-start gap-4 md:flex-nowrap">
 			<ImagePickerCard bind:images {imagePreviews} bind:outputs bind:isLoading />
 			<ResultCard {isLoading} {outputs} {outputPreviews} />
 		</div>

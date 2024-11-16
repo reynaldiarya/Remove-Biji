@@ -40,8 +40,10 @@
 	];
 </script>
 
-<footer class="flex items-center justify-between py-4 text-gray-600 dark:text-gray-400">
-	<p>Made with ❤️ by Taufik Hidayat</p>
+<footer
+	class="flex flex-wrap items-center justify-center py-4 text-gray-600 md:justify-between dark:text-gray-400"
+>
+	<p>Copyright © 2024 Taufik Hidayat</p>
 	<div>
 		{#each socialMedias as { icon, url }}
 			<a

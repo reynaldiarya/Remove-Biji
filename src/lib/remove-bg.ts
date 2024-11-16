@@ -23,5 +23,5 @@ export const removeBg = async (images: FileList | undefined) => {
 		throw new Error(data.message as string);
 	}
 
-	return data.images as { images: string[] };
+	return data.images as string[];
 };

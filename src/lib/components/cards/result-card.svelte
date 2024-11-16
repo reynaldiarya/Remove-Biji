@@ -19,7 +19,7 @@
 	let { outputs, isLoading, outputPreviews }: Props = $props();
 </script>
 
-<div class="card w-1/2">
+<div class="card w-full md:w-1/2">
 	<header class="h4 card-header font-medium">Hasil</header>
 	<section class="overflow-y-auto p-4">
 		{#if outputs && outputs.length > 0}

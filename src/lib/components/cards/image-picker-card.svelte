@@ -57,7 +57,7 @@
 	}
 </script>
 
-<div class="card w-1/2">
+<div class="card w-full md:w-1/2">
 	<header class="h4 card-header font-medium">Pilih gambar</header>
 	<section class="max-h-[600px] overflow-y-auto p-4">
 		{#if images && images.length > 0}
@@ -71,7 +71,7 @@
 			>
 				{#each images as image, index (image.name)}
 					<div
-						class={clsx('group relative mx-auto max-h-[550px]')}
+						class={clsx('group relative mx-auto xl:max-h-[450px]')}
 						animate:flip={{ duration: 400 }}
 						transition:fade={{ duration: 400 }}
 					>
@@ -80,7 +80,7 @@
 								src={imagePreviews?.at(index)}
 								alt={image.name}
 								class={clsx(
-									'max-h-[550px] rounded-lg',
+									'rounded-lg xl:max-h-[450px]',
 									images.length === 1 ? 'object-contain' : 'aspect-square object-cover'
 								)}
 							/>
