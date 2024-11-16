@@ -12,7 +12,7 @@
 			</div>
 			Remove Biji
 		</h2>
-		<h6 class="h5 font-light">Hilangkan biji mu dengan mudah</h6>
+		<h6 class="h6 text-gray-600 dark:text-gray-400">Hilangkan biji mu dengan mudah</h6>
 	</div>
 	<div><LightSwitch /></div>
 </header>

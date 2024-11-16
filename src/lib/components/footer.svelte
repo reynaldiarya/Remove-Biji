@@ -40,12 +40,8 @@
 	];
 </script>
 
-<footer class="flex items-center justify-between py-4 text-gray-500 dark:text-gray-400">
-	<p>
-		Made with ❤️ by <a href="https://bento.me/tfkhdyt" target="_blank" class="anchor"
-			>Taufik Hidayat</a
-		>
-	</p>
+<footer class="flex items-center justify-between py-4 text-gray-600 dark:text-gray-400">
+	<p>Made with ❤️ by Taufik Hidayat</p>
 	<div>
 		{#each socialMedias as { icon, url }}
 			<a
