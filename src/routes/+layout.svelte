@@ -6,4 +6,4 @@
 </script>
 
 {@render children()}
-<Toaster />
+<Toaster position="top-right" />
