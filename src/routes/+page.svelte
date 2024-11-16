@@ -17,6 +17,8 @@
 	import { match } from 'ts-pattern';
 	import JSZip from 'jszip';
 	import CircleIcon from '$lib/icons/circle-icon.svelte';
+	import { SSE } from 'sse.js';
+	import LoadingIcon from '$lib/icons/loading-icon.svelte';
 
 	let images = $state<FileList>();
 	let imagePreviews = $derived(
@@ -65,6 +67,18 @@
 
 	let isLoading = $state(false);
 
+	function base64ToBlob(base64: string) {
+		const byteCharacters = atob(base64);
+		const byteArrays = [];
+
+		for (let i = 0; i < byteCharacters.length; i++) {
+			byteArrays.push(byteCharacters.charCodeAt(i));
+		}
+
+		const byteArray = new Uint8Array(byteArrays);
+		return new Blob([byteArray], { type: 'image/png' });
+	}
+
 	const removeBg = async () => {
 		if (!images) throw new Error('Tidak ada gambar yang dikirim');
 
@@ -73,54 +87,45 @@
 			throw payload.error;
 		}
 
-		const result = await Promise.allSettled(
-			payload.data.map(async (image) => {
-				const form = new FormData();
-				form.append('image', image);
+		const form = new FormData();
+		for (const image of payload.data) {
+			form.append('image', image);
+		}
 
-				const resp = await fetch('/api/remove-biji', {
-					method: 'POST',
-					body: form
-				});
-				if (!resp.ok) {
-					throw new Error(resp.statusText);
-				}
+		const resp = await fetch('/api/remove-biji', {
+			method: 'POST',
+			body: form
+		});
+		if (!resp.ok) {
+			throw new Error(resp.statusText);
+		}
 
-				const data = await resp.blob();
+		const data: { images: string[] } = await resp.json();
 
-				return data;
+		await Promise.allSettled(
+			data.images.map(async (image) => {
+				const blob = base64ToBlob(image);
+				outputs.push(blob);
 			})
 		);
-
-		return result;
 	};
 
 	const handleRemoveBg = async () => {
 		isLoading = true;
+		outputs = [];
 
-		await toast.promise(removeBg(), {
-			loading: 'Sedang dalam proses',
-			success: (result) => {
-				for (const item of result) {
-					if (item.status === 'fulfilled') {
-						outputs.push(item.value);
-					}
-				}
-
-				isLoading = false;
-
-				return 'Proses berhasil';
-			},
-			error: (err: unknown) => {
-				if (err instanceof z.ZodError) {
-					return err.errors.at(0)?.message ?? 'Proses gagal';
-				}
-
-				isLoading = false;
-
-				return 'Proses gagal';
+		try {
+			await removeBg();
+		} catch (err) {
+			if (err instanceof z.ZodError) {
+				toast.error(err.errors.at(0)?.message ?? 'Proses gagal');
+			} else {
+				toast.error('Proses gagal');
 			}
-		});
+		}
+
+		isLoading = false;
+		toast.success('Proses berhasil');
 	};
 
 	function downloadBlob(url: string, fileName = 'download'): void {
@@ -154,10 +159,16 @@
 
 		window.URL.revokeObjectURL(link.href);
 	}
+
+	$effect(() => {
+		if (!images || images.length === 0) {
+			outputs = [];
+		}
+	});
 </script>
 
 <svelte:head>
-	<title>Remove Biji - Hilangkan biji mu dengan mudah</title>
+	<title>{isLoading ? '(Processing...) ' : ''}Remove Biji - Hilangkan biji mu dengan mudah</title>
 </svelte:head>
 
 <main class="container mx-auto py-8">
@@ -175,13 +186,13 @@
 		<div><LightSwitch /></div>
 	</header>
 	<div class="mt-4 flex items-stretch gap-4">
-		<div class="card w-1/2">
+		<div class="card flex w-1/2 flex-col">
 			<header class="h4 card-header font-medium">Pilih gambar</header>
-			<section class="max-h-[600px] overflow-y-auto p-4">
+			<section class="max-h-[600px] min-h-0 flex-1 overflow-y-auto p-4">
 				{#if images && images.length > 0}
 					<div
 						class={clsx(
-							'grid grid-cols-4 gap-4',
+							'grid gap-4',
 							match(images.length)
 								.with(1, () => 'grid-cols-1')
 								.with(2, () => 'grid-cols-2')
@@ -191,14 +202,14 @@
 					>
 						{#each images as image, index (image.name)}
 							<div
-								class="group relative mx-auto aspect-square max-h-[550px] object-cover"
+								class="group relative mx-auto w-auto"
 								animate:flip={{ duration: 400 }}
 								transition:fade={{ duration: 400 }}
 							>
 								<img
 									src={imagePreviews?.at(index)}
 									alt={image.name}
-									class="aspect-square max-h-[550px] rounded-lg object-cover"
+									class="mx-auto aspect-square max-h-[550px] rounded-lg object-cover"
 								/>
 								<div
 									class="absolute left-0 top-0 z-10 hidden h-full w-full rounded-tr-lg bg-gradient-to-bl from-slate-900 via-transparent to-transparent group-hover:block"
@@ -255,7 +266,7 @@
 				{#if outputs && outputs.length > 0}
 					<div
 						class={clsx(
-							'grid grid-cols-4 gap-4',
+							'grid gap-4',
 							match(outputs.length)
 								.with(1, () => 'grid-cols-1')
 								.with(2, () => 'grid-cols-2')
@@ -290,6 +301,13 @@
 								</div>
 							</div>
 						{/each}
+					</div>
+				{:else if isLoading}
+					<div class="flex h-full items-center justify-center">
+						<div class="flex flex-col items-center justify-center space-y-3">
+							<LoadingIcon class="block size-20 animate-spin" />
+							<p class="text-center text-white/50">Sabar bang, lagi diproses</p>
+						</div>
 					</div>
 				{:else}
 					<div class="flex h-full items-center justify-center">
