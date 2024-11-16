@@ -11,9 +11,7 @@ export function downloadBlob(url: string, fileName = 'download'): void {
 	link.click();
 }
 
-export async function downloadAll(outputs: Blob[], imagePreviews: string[] | undefined) {
-	if (!imagePreviews) return;
-
+export async function downloadAll(outputs: Blob[]) {
 	const zip = new JSZip();
 
 	for (const file of outputs) {

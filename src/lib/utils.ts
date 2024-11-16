@@ -1,7 +1,5 @@
 // place files you want to import through the `$lib` alias in this folder.
-export const removeFileFromList = (fileToRemove: File, images: FileList | undefined) => {
-	if (!images) return;
-
+export const removeFileFromList = (fileToRemove: File, images: FileList) => {
 	// Convert FileList to Array
 	const filesArray: File[] = Array.from(images);
 
