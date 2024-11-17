@@ -1,4 +1,4 @@
-import { limiter } from '$lib/rate-limiter';
+import { guestLimiter, regularUserLimiter } from '$lib/rate-limiter';
 import { error } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
 import { removeBackground } from '@imgly/background-removal-node';
@@ -7,8 +7,14 @@ import { rotateImageToMatch } from '$lib/image';
 import { withCatch } from '@tfkhdyt/with-catch';
 
 export const POST: RequestHandler = async (event) => {
-	if (env.NODE_ENV === 'production' && (await limiter.isLimited(event))) {
-		throw error(429, 'Kamu telah terlalu banyak mencoba, coba lagi nanti');
+	if (env.NODE_ENV === 'production') {
+		if (event.locals.user && (await regularUserLimiter.isLimited(event))) {
+			throw error(429, 'Kamu telah terlalu banyak mencoba, coba lagi nanti');
+		}
+
+		if (await guestLimiter.isLimited(event)) {
+			throw error(429, 'Akun tamu hanya dapat menggunakan 3 kali per hari, coba lagi besok');
+		}
 	}
 
 	const { request } = event;
