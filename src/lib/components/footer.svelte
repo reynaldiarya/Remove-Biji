@@ -41,9 +41,9 @@
 </script>
 
 <footer
-	class="flex flex-wrap items-center justify-center py-4 text-gray-600 md:justify-between dark:text-gray-400"
+	class="flex flex-wrap items-center justify-center gap-4 py-4 text-gray-600 md:justify-between dark:text-gray-400"
 >
-	<div class="flex items-center space-x-2">
+	<div class="flex flex-wrap items-center justify-center gap-x-2">
 		<span>Copyright © 2024 Taufik Hidayat</span>
 		<span>•</span>
 		<a href="/privacy-policy" class="hover:underline">Privacy Policy</a>
