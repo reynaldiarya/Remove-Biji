@@ -9,6 +9,8 @@
 	import SvelteSeo from 'svelte-seo';
 	import '../app.css';
 	import { env } from '$env/dynamic/public';
+	import { computePosition, autoUpdate, offset, shift, flip, arrow } from '@floating-ui/dom';
+	import { storePopup } from '@skeletonlabs/skeleton';
 
 	let { children } = $props();
 
@@ -16,6 +18,8 @@
 	const description =
 		'Remove Biji adalah aplikasi background remover minimalis yang mudah digunakan';
 	const url = 'https://remove.biji.my.id';
+
+	storePopup.set({ computePosition, autoUpdate, offset, shift, flip, arrow });
 </script>
 
 <svelte:head>

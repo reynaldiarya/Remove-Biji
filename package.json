@@ -12,10 +12,12 @@
 		"format": "prettier --write .",
 		"lint": "prettier --check . && eslint .",
 		"db:push": "drizzle-kit push",
+		"db:generate": "drizzle-kit generate",
 		"db:migrate": "drizzle-kit migrate",
 		"db:studio": "drizzle-kit studio"
 	},
 	"devDependencies": {
+		"@floating-ui/dom": "^1.6.12",
 		"@fontsource/roboto": "^5.1.0",
 		"@skeletonlabs/skeleton": "^2.10.3",
 		"@skeletonlabs/tw-plugin": "^0.4.0",
@@ -51,7 +53,9 @@
 		"@node-rs/argon2": "^2.0.0",
 		"@oslojs/crypto": "^1.0.1",
 		"@oslojs/encoding": "^1.1.0",
+		"@pilcrowjs/object-parser": "^0.0.4",
 		"@tfkhdyt/with-catch": "npm:@jsr/tfkhdyt__with-catch@^0.3.0",
+		"arctic": "^2.2.2",
 		"drizzle-orm": "^0.36.3",
 		"postgres": "^3.4.5",
 		"sharp": "^0.33.5",

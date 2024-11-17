@@ -3,6 +3,13 @@
 	import ResultCard from '$lib/components/cards/result-card.svelte';
 	import Footer from '$lib/components/footer.svelte';
 	import Header from '$lib/components/header.svelte';
+	import type { PageData } from './$types';
+
+	type Props = {
+		data: PageData;
+	};
+
+	let { data }: Props = $props();
 
 	let images = $state<FileList>();
 	let imagePreviews = $derived(
@@ -30,7 +37,7 @@
 
 <main class="container mx-auto flex min-h-screen flex-col px-4 md:px-6 lg:px-8">
 	<div class="flex-grow py-8">
-		<Header />
+		<Header user={data.user} />
 		<div class="mt-4 flex flex-wrap items-start gap-4 md:flex-nowrap">
 			<ImagePickerCard bind:images {imagePreviews} bind:outputs bind:isLoading />
 			<ResultCard {isLoading} {outputs} {outputPreviews} />
