@@ -1,0 +1,111 @@
+# Privacy Policy for Remove Biji
+
+_Last Updated: November 17, 2024_
+
+## Introduction
+
+Welcome to Remove Biji ("we," "our," or "us"). We are committed to protecting your privacy and ensuring you have a positive experience when using our background removal service. This privacy policy explains how we collect, use, and safeguard your information when you use our web-based application.
+
+## Information We Collect
+
+### Account Information
+
+When you use Remove Biji, we collect the following information through Google Sign-In:
+
+- Google ID
+- Email address
+- Name
+- Profile picture
+
+### Technical Information
+
+We automatically collect certain information about your device when you access our service, including:
+
+- Browser type and version
+- Operating system
+- IP address
+- Access timestamps
+- Browser settings
+
+## How We Use Your Information
+
+We use your personal information for the following purposes:
+
+- To create and manage your user account
+- To provide our background removal service
+- To authenticate your identity
+- To improve and optimize our application
+- To protect against fraud and unauthorized access
+
+## Image Processing and Storage
+
+We want to be transparent about how we handle your images:
+
+- We process your images in real-time for background removal
+- We DO NOT store or retain any uploaded images
+- Images are automatically deleted after processing
+- We DO NOT use your images for any other purposes
+
+## Payment Processing
+
+For payment processing:
+
+- We use secure third-party payment gateways
+- We DO NOT collect or store any payment information
+- All payment transactions are encrypted and processed through our payment gateway partners
+- Please refer to the payment gateway's privacy policy for information about how they handle your payment data
+
+## Data Sharing and Disclosure
+
+We do not sell, trade, or rent your personal information to third parties. We may share your information only in the following circumstances:
+
+- When required by law
+- To protect our rights and property
+- To prevent fraud or illegal activities
+- With your explicit consent
+
+## Data Security
+
+We implement appropriate technical and organizational security measures to protect your personal information, including:
+
+- Encryption of data in transit
+- Secure server infrastructure
+- Regular security assessments
+- Access controls and authentication measures
+
+## Your Rights
+
+You have the right to:
+
+- Access your personal information
+- Correct inaccurate or incomplete information
+- Request deletion of your account and associated data
+- Export your data
+- Withdraw consent at any time
+
+## Children's Privacy
+
+Remove Biji is intended for general audiences and does not knowingly collect personal information from children under 13. If we learn that we have collected personal information from a child under 13, we will take steps to delete such information.
+
+## Changes to This Policy
+
+We may update this privacy policy from time to time. We will notify you of any changes by:
+
+- Posting the new privacy policy on our website
+- Updating the "Last Updated" date at the top of this policy
+- Sending you an email notification for significant changes
+
+## Contact Us
+
+If you have any questions about this privacy policy or our practices, please contact us at:
+
+- Email: tfkhdyt@proton.me
+- Website: https://bento.me/tfkhdyt
+
+## Compliance
+
+This privacy policy complies with applicable data protection laws and regulations, including:
+
+- General Data Protection Regulation (GDPR)
+- California Consumer Privacy Act (CCPA)
+- Personal Information Protection and Electronic Documents Act (PIPEDA)
