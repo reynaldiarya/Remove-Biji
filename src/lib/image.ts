@@ -17,7 +17,6 @@ export const rotateImageToMatch = async (inputBlob: Blob, outputBlob: Blob): Pro
 	const outputOrientation = await getOrientation(outputBlob);
 
 	if (inputOrientation === outputOrientation) {
-		console.log('No rotation needed. Output image matches input orientation.');
 		return outputBlob; // Return the same Blob if no rotation is needed
 	}
 
@@ -44,10 +43,9 @@ export const rotateImageToMatch = async (inputBlob: Blob, outputBlob: Blob): Pro
 
 		// Convert the rotated Buffer back to a Blob
 		const rotatedBlob = new Blob([rotatedBuffer], { type: outputBlob.type });
-		console.log('Output image rotated successfully.');
+
 		return rotatedBlob;
 	} else {
-		console.log('Unknown orientation, no rotation applied.');
 		return outputBlob;
 	}
 };
