@@ -50,6 +50,7 @@
 				href={url}
 				target="_blank"
 				class="inline-flex h-fit w-fit items-center justify-center rounded-full p-2 transition hover:bg-black/10 dark:hover:bg-white/5"
+				aria-label={url}
 			>
 				<svelte:component this={icon} class="h-6 w-6" />
 			</a>

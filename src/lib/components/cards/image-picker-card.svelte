@@ -58,7 +58,9 @@
 </script>
 
 <div class="card w-full md:w-1/2">
-	<header class="h4 card-header font-medium">Pilih gambar</header>
+	<header class="h4 card-header font-medium">
+		<label for="file-upload">Pilih gambar</label>
+	</header>
 	<section class="max-h-[600px] overflow-y-auto p-4">
 		{#if images && images.length > 0}
 			<div

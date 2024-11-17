@@ -9,7 +9,13 @@
 	let { images = $bindable() }: Props = $props();
 </script>
 
-<FileDropzone name="files" bind:files={images} multiple accept=".jpg, .jpeg, .png, .webp">
+<FileDropzone
+	name="files"
+	bind:files={images}
+	multiple
+	accept=".jpg, .jpeg, .png, .webp"
+	id="file-upload"
+>
 	<svelte:fragment slot="lead"
 		><FileUploadIcon width="3em" height="3em" class="mx-auto" /></svelte:fragment
 	>
