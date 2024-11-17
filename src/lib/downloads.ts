@@ -1,3 +1,4 @@
+import { withCatch } from '@tfkhdyt/with-catch';
 import JSZip from 'jszip';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -18,10 +19,16 @@ export async function downloadAll(outputs: Blob[]) {
 		zip.file(`remove-biji-${uuidv4()}.png`, file); // adds the image file to the zip file
 	}
 
-	const zipData = await zip.generateAsync({
-		type: 'blob',
-		streamFiles: true
-	});
+	const [err, zipData] = await withCatch(
+		zip.generateAsync({
+			type: 'blob',
+			streamFiles: true
+		})
+	);
+	if (err) {
+		console.error('Error generating zip file:', err);
+		throw new Error('Error generating zip file', { cause: err });
+	}
 
 	const link = document.createElement('a');
 	link.href = window.URL.createObjectURL(zipData);

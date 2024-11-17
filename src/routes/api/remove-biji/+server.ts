@@ -4,6 +4,7 @@ import type { RequestHandler } from './$types';
 import { removeBackground } from '@imgly/background-removal-node';
 import { env } from '$env/dynamic/private';
 import { rotateImageToMatch } from '$lib/image';
+import { withCatch } from '@tfkhdyt/with-catch';
 
 export const POST: RequestHandler = async (event) => {
 	if (env.NODE_ENV === 'production' && (await limiter.isLimited(event))) {
@@ -17,10 +18,14 @@ export const POST: RequestHandler = async (event) => {
 
 	const result = await Promise.allSettled(
 		files.map(async (image) => {
-			let result = await removeBackground(image); // Process the image
-			result = await rotateImageToMatch(new Blob([image], { type: 'image/png' }), result);
+			let [err, output] = await withCatch(removeBackground(image)); // Process the image
+			if (err) {
+				console.error('Error removing background:', err);
+				throw new Error('Error removing background', { cause: err });
+			}
+			output = await rotateImageToMatch(new Blob([image], { type: 'image/png' }), output!);
 
-			const base64 = await blobToBase64(result); // Convert the blob to base64
+			const base64 = await blobToBase64(output); // Convert the blob to base64
 			return base64;
 		})
 	);

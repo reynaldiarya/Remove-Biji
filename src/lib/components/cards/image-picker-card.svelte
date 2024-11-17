@@ -11,6 +11,7 @@
 	import toast from 'svelte-french-toast';
 	import { z } from 'zod';
 	import BgReplaceIcon from '$lib/icons/bg-replace-icon.svelte';
+	import { withCatch } from '@tfkhdyt/with-catch';
 
 	type Props = {
 		images: FileList | undefined;
@@ -31,27 +32,24 @@
 		isLoading = true;
 		outputs = [];
 
-		try {
-			const removedImages = await removeBg(images);
-
-			await Promise.allSettled(
-				removedImages.map(async (image) => {
-					const blob = base64ToBlob(image);
-					outputs.push(blob);
-				})
-			);
-
-			toast.success('Proses berhasil');
-		} catch (err) {
+		const [err, removedImages] = await withCatch(removeBg(images));
+		if (err) {
 			if (err instanceof z.ZodError) {
-				toast.error(err.errors.at(0)?.message ?? 'Proses gagal');
-			} else if (err instanceof Error) {
-				console.log(err);
-				toast.error(err.message);
+				toast.error(err.issues[0].message);
 			} else {
-				toast.error('Proses gagal');
+				toast.error(err.message);
 			}
+			isLoading = false;
 		}
+
+		await Promise.allSettled(
+			removedImages!.map(async (image) => {
+				const blob = base64ToBlob(image);
+				outputs.push(blob);
+			})
+		);
+
+		toast.success('Proses berhasil');
 
 		isLoading = false;
 	}

@@ -9,6 +9,8 @@
 	import { flip } from 'svelte/animate';
 	import { fade } from 'svelte/transition';
 	import { v4 as uuidv4 } from 'uuid';
+	import { withCatch } from '@tfkhdyt/with-catch';
+	import toast from 'svelte-french-toast';
 
 	type Props = {
 		outputs: Blob[];
@@ -17,6 +19,13 @@
 	};
 
 	let { outputs, isLoading, outputPreviews }: Props = $props();
+
+	async function handleDownloadAll() {
+		const [err] = await withCatch(downloadAll(outputs));
+		if (err) {
+			toast.error(err.message);
+		}
+	}
 </script>
 
 <div class="card w-full md:w-1/2">
@@ -80,11 +89,7 @@
 	{#if outputs && outputs.length > 0}
 		<footer class="card-footer flex pt-4 text-center">
 			{#if outputs.length > 1}
-				<button
-					type="button"
-					class="variant-filled btn mx-auto"
-					onclick={() => downloadAll(outputs)}
-				>
+				<button type="button" class="variant-filled btn mx-auto" onclick={handleDownloadAll}>
 					<DownloadMultipleIcon class="mr-2 size-6" />
 					Download semua
 				</button>
