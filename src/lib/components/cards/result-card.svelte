@@ -40,7 +40,8 @@
 						.otherwise(() => 'grid-cols-4')
 				)}
 			>
-				{#each outputs as output, i (i)}
+				<!-- eslint-disable-next-line @typescript-eslint/no-unused-vars -->
+				{#each outputs as _, i (i)}
 					<div
 						class="max-h-[450px]' group relative mx-auto"
 						animate:flip={{ duration: 400 }}

@@ -18,19 +18,22 @@ export const POST: RequestHandler = async (event) => {
 
 	const result = await Promise.allSettled(
 		files.map(async (image) => {
-			let [err, output] = await withCatch(removeBackground(image)); // Process the image
+			const [err, output] = await withCatch(removeBackground(image)); // Process the image
 			if (err) {
 				console.error('Error removing background:', err);
 				throw new Error('Error removing background', { cause: err });
 			}
-			output = await rotateImageToMatch(new Blob([image], { type: 'image/png' }), output!);
+			const rotatedOutput = await rotateImageToMatch(
+				new Blob([image], { type: 'image/png' }),
+				output!
+			);
 
-			const base64 = await blobToBase64(output); // Convert the blob to base64
+			const base64 = await blobToBase64(rotatedOutput); // Convert the blob to base64
 			return base64;
 		})
 	);
 
-	let output: string[] = [];
+	const output: string[] = [];
 	for (const item of result) {
 		if (item.status === 'fulfilled') {
 			output.push(item.value);
