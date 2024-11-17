@@ -3,6 +3,7 @@ import { error } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
 import { removeBackground } from '@imgly/background-removal-node';
 import { env } from '$env/dynamic/private';
+import { rotateImageToMatch } from '$lib/image';
 
 export const POST: RequestHandler = async (event) => {
 	if (env.NODE_ENV === 'production' && (await limiter.isLimited(event))) {
@@ -16,7 +17,9 @@ export const POST: RequestHandler = async (event) => {
 
 	const result = await Promise.allSettled(
 		files.map(async (image) => {
-			const result = await removeBackground(image); // Process the image
+			let result = await removeBackground(image); // Process the image
+			result = await rotateImageToMatch(new Blob([image], { type: 'image/png' }), result);
+
 			const base64 = await blobToBase64(result); // Convert the blob to base64
 			return base64;
 		})
