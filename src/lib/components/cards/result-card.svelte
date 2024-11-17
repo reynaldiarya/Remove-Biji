@@ -53,11 +53,13 @@
 								class="variant-filled-surface btn rounded-lg"
 								target="_blank"><ViewIcon class="size-5" /></a
 							>
-							<button
-								class="variant-filled btn rounded-lg"
-								onclick={() => downloadBlob(outputPreviews[i], `remove-biji-${uuidv4()}.png`)}
-								><DownloadIcon class="size-5" /></button
-							>
+							{#if outputs.length > 1}
+								<button
+									class="variant-filled btn rounded-lg"
+									onclick={() => downloadBlob(outputPreviews[i], `remove-biji-${uuidv4()}.png`)}
+									><DownloadIcon class="size-5" /></button
+								>
+							{/if}
 						</div>
 					</div>
 				{/each}
@@ -75,12 +77,27 @@
 			</div>
 		{/if}
 	</section>
-	{#if outputs && outputs.length > 1}
+	{#if outputs && outputs.length > 0}
 		<footer class="card-footer flex pt-4 text-center">
-			<button type="button" class="variant-filled btn mx-auto" onclick={() => downloadAll(outputs)}>
-				<DownloadMultipleIcon class="mr-2 size-6" />
-				Download semua
-			</button>
+			{#if outputs.length > 1}
+				<button
+					type="button"
+					class="variant-filled btn mx-auto"
+					onclick={() => downloadAll(outputs)}
+				>
+					<DownloadMultipleIcon class="mr-2 size-6" />
+					Download semua
+				</button>
+			{:else if outputs.length === 1}
+				<button
+					type="button"
+					class="variant-filled btn mx-auto"
+					onclick={() => downloadBlob(outputPreviews[0], `remove-biji-${uuidv4()}.png`)}
+				>
+					<DownloadIcon class="mr-2 size-6" />
+					Download
+				</button>
+			{/if}
 		</footer>
 	{/if}
 </div>
