@@ -20,5 +20,5 @@
 		><FileUploadIcon width="3em" height="3em" class="mx-auto" /></svelte:fragment
 	>
 	<svelte:fragment slot="message"><strong>Pilih gambar</strong> atau drag and drop</svelte:fragment>
-	<svelte:fragment slot="meta">Hanya JPEG, PNG, dan WebP (Maksimal 2MB)</svelte:fragment>
+	<svelte:fragment slot="meta">Hanya JPEG, PNG, dan WebP (Maksimal 5MB)</svelte:fragment>
 </FileDropzone>
