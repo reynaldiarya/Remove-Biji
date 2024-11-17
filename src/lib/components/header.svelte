@@ -48,13 +48,13 @@
 
 <header class="flex items-center justify-between pb-4">
 	<div>
-		<h1 class="h2 flex items-center font-bold">
+		<a class="h2 flex items-center font-bold" href="/">
 			<div class="mr-2 flex items-center">
 				<CircleIcon class="size-8" />
 				<CircleIcon class="-ml-3 size-8" />
 			</div>
 			Remove Biji
-		</h1>
+		</a>
 		<h2 class="h6 text-gray-600 dark:text-gray-400">Hilangkan biji mu dengan mudah</h2>
 	</div>
 	<div class="hidden items-center space-x-8 md:flex">
