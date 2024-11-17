@@ -127,7 +127,7 @@
 			{#if outputs.length === 0}
 				<button
 					type="button"
-					class="variant-filled btn"
+					class="plausible-event-name=Remove+Biji variant-filled btn"
 					onclick={handleRemoveBg}
 					disabled={isLoading}
 				>

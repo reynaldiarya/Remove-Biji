@@ -60,12 +60,12 @@
 						>
 							<a
 								href={outputPreviews[i]}
-								class="variant-filled-surface btn rounded-lg"
+								class="plausible-event-name=View variant-filled-surface btn rounded-lg"
 								target="_blank"><ViewIcon class="size-5" /></a
 							>
 							{#if outputs.length > 1}
 								<button
-									class="variant-filled btn rounded-lg"
+									class="plausible-event-name=Download variant-filled btn rounded-lg"
 									onclick={() => downloadBlob(outputPreviews[i], `remove-biji-${uuidv4()}.png`)}
 									><DownloadIcon class="size-5" /></button
 								>
@@ -90,14 +90,18 @@
 	{#if outputs && outputs.length > 0}
 		<footer class="card-footer flex pt-4 text-center">
 			{#if outputs.length > 1}
-				<button type="button" class="variant-filled btn mx-auto" onclick={handleDownloadAll}>
+				<button
+					type="button"
+					class="plausible-event-name=Download+Multiple variant-filled btn mx-auto"
+					onclick={handleDownloadAll}
+				>
 					<DownloadMultipleIcon class="mr-2 size-6" />
 					Download semua
 				</button>
 			{:else if outputs.length === 1}
 				<button
 					type="button"
-					class="variant-filled btn mx-auto"
+					class="plausible-event-name=Download variant-filled btn mx-auto"
 					onclick={() => downloadBlob(outputPreviews[0], `remove-biji-${uuidv4()}.png`)}
 				>
 					<DownloadIcon class="mr-2 size-6" />
