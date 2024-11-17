@@ -42,7 +42,7 @@
 		class={clsx('plausible-event-name=Login variant-filled-tertiary btn btn-sm', className)}
 	>
 		<GoogleIcon class="mr-2 size-5" />
-		Login with Google
+		Login dengan Google
 	</a>
 {/snippet}
 
@@ -57,8 +57,11 @@
 		</h1>
 		<h2 class="h6 text-gray-600 dark:text-gray-400">Hilangkan biji mu dengan mudah</h2>
 	</div>
-	<div class="hidden items-center space-x-4 md:flex">
-		<LightSwitch />
+	<div class="hidden items-center space-x-8 md:flex">
+		<a
+			href="/pricing"
+			class="text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-500">Harga</a
+		>
 		{#if user}
 			<div use:popup={profilePopup}>
 				<Avatar src={user.picture ?? undefined} width="w-10" rounded="rounded-full" />
@@ -66,6 +69,7 @@
 		{:else}
 			{@render loginWithGoogle()}
 		{/if}
+		<LightSwitch />
 	</div>
 	<div class="md:hidden">
 		<button onclick={handleToggle}> <HamburgerIcon class="size-10" /> </button>
@@ -102,15 +106,14 @@
 	<div class="w-full space-y-3">
 		<a
 			href="/pricing"
-			class="block rounded px-4 py-2 font-medium hover:bg-surface-300 dark:hover:bg-surface-800"
-			>Pricing</a
+			class="block rounded px-4 py-2 hover:bg-surface-300 dark:hover:bg-surface-800">Harga</a
 		>
-		<div class="flex items-center justify-between rounded px-4 py-2 font-medium">
-			Theme
+		<div class="flex items-center justify-between rounded px-4 py-2">
+			Tema
 			<LightSwitch />
 		</div>
 		{#if user}
-			<div class="flex items-center justify-between px-4 font-medium">
+			<div class="flex items-center justify-between px-4">
 				{user.name}
 				<Avatar src={user.picture ?? undefined} width="w-10" rounded="rounded-full" />
 			</div>
