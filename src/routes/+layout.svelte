@@ -8,6 +8,7 @@
 	import { Toaster } from 'svelte-french-toast';
 	import SvelteSeo from 'svelte-seo';
 	import '../app.css';
+	import { env } from '$env/dynamic/public';
 
 	let { children } = $props();
 
@@ -16,6 +17,14 @@
 		'Remove Biji adalah aplikasi background remover minimalis yang mudah digunakan';
 	const url = 'https://remove.biji.my.id';
 </script>
+
+<svelte:head>
+	<script
+		defer
+		data-domain={env.PUBLIC_PLAUSIBLE_DATA_DOMAIN}
+		src="https://bunseki.biji.my.id/js/script.file-downloads.outbound-links.tagged-events.js"
+	></script>
+</svelte:head>
 
 <SvelteSeo
 	{title}
