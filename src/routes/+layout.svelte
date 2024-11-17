@@ -11,8 +11,17 @@
 	import { env } from '$env/dynamic/public';
 	import { computePosition, autoUpdate, offset, shift, flip, arrow } from '@floating-ui/dom';
 	import { storePopup } from '@skeletonlabs/skeleton';
+	import Header from '$lib/components/header.svelte';
+	import Footer from '$lib/components/footer.svelte';
+	import type { LayoutData } from './$types';
+	import type { Snippet } from 'svelte';
 
-	let { children } = $props();
+	type Props = {
+		data: LayoutData;
+		children: Snippet<[]>;
+	};
+
+	let { children, data }: Props = $props();
 
 	const title = 'Remove Biji - Hilangkan biji mu dengan mudah';
 	const description =
@@ -51,5 +60,14 @@
 	}}
 />
 
-{@render children()}
+<main class="container mx-auto flex min-h-screen flex-col px-4 md:px-6 lg:px-8">
+	<div class="flex-grow py-8">
+		<Header user={data.user} />
+		<div class="py-8">
+			{@render children()}
+		</div>
+	</div>
+	<Footer />
+</main>
+
 <Toaster position="top-right" />

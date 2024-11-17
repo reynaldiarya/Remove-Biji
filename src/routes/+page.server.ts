@@ -1,7 +1,6 @@
 import type { PageServerLoad } from './$types';
 
-export const load: PageServerLoad = async ({ locals }) => {
-	return {
-		user: locals.user
-	};
+export const load: PageServerLoad = async ({ parent }) => {
+	const data = await parent();
+	return data;
 };
