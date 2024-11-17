@@ -51,6 +51,7 @@
 		"@node-rs/argon2": "^2.0.0",
 		"@oslojs/crypto": "^1.0.1",
 		"@oslojs/encoding": "^1.1.0",
+		"@tfkhdyt/with-catch": "npm:@jsr/tfkhdyt__with-catch@^0.3.0",
 		"drizzle-orm": "^0.36.3",
 		"postgres": "^3.4.5",
 		"sharp": "^0.33.5",
