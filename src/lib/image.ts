@@ -20,32 +20,32 @@ export const rotateImageToMatch = async (inputBlob: Blob, outputBlob: Blob): Pro
 		return outputBlob; // Return the same Blob if no rotation is needed
 	}
 
-	// Determine the rotation needed to correct the output image
-	const rotationMap: Record<number, number> = {
-		3: 180, // Upside down
-		6: 90, // Rotated 90° CW
-		8: -90 // Rotated 90° CCW
+	const orientationRotationMap: Record<number, number> = {
+		1: 0, // Normal
+		3: 180, // Upside Down
+		6: 90, // Rotated 90° Clockwise
+		8: -90 // Rotated 90° Counterclockwise
 	};
-	const rotationDegrees = rotationMap[outputOrientation] || 0;
+	// Compute the relative rotation
+	const outputRotation = orientationRotationMap[outputOrientation] || 0;
+	const inputRotation = orientationRotationMap[inputOrientation] || 0;
 
-	if (rotationDegrees) {
-		// Convert Blob to Buffer
-		const buffer = await outputBlob.arrayBuffer();
+	const rotationNeeded = inputRotation - outputRotation;
 
-		// Apply rotation using sharp
-		const [err, rotatedBuffer] = await withCatch(
-			sharp(Buffer.from(buffer)).rotate(rotationDegrees).toBuffer()
-		);
-		if (err) {
-			console.error('Error rotating image:', err);
-			throw new Error('Error rotating image', { cause: err });
-		}
+	// Convert Blob to Bu	ffer
+	const buffer = await outputBlob.arrayBuffer();
 
-		// Convert the rotated Buffer back to a Blob
-		const rotatedBlob = new Blob([rotatedBuffer], { type: outputBlob.type });
-
-		return rotatedBlob;
-	} else {
-		return outputBlob;
+	// Apply rotation using sharp
+	const [err, rotatedBuffer] = await withCatch(
+		sharp(Buffer.from(buffer)).rotate(rotationNeeded).toBuffer()
+	);
+	if (err) {
+		console.error('Error rotating image:', err);
+		throw new Error('Error rotating image', { cause: err });
 	}
+
+	// Convert the rotated Buffer back to a Blob
+	const rotatedBlob = new Blob([rotatedBuffer], { type: outputBlob.type });
+
+	return rotatedBlob;
 };
