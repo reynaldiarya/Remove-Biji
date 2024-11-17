@@ -34,8 +34,7 @@
 		card: 'summary',
 		site: '@tfkhdyt__',
 		title,
-		description,
-		image: 'https://www.primal-movement.com/images/squatting.jpg'
+		description
 	}}
 />
 
