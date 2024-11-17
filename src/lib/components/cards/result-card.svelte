@@ -33,7 +33,7 @@
 			>
 				{#each outputs as output, i (i)}
 					<div
-						class="group relative mx-auto max-h-[550px]"
+						class="max-h-[450px]' group relative mx-auto"
 						animate:flip={{ duration: 400 }}
 						transition:fade={{ duration: 400 }}
 					>
@@ -41,7 +41,7 @@
 							src={outputPreviews[i]}
 							alt="output {i + 1}"
 							class={clsx(
-								'max-h-[550px] rounded-lg',
+								'max-h-[450px] rounded-lg',
 								outputs.length === 1 ? 'object-contain' : 'aspect-square object-cover'
 							)}
 						/>

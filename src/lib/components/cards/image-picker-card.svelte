@@ -71,7 +71,7 @@
 			>
 				{#each images as image, index (image.name)}
 					<div
-						class={clsx('group relative mx-auto xl:max-h-[450px]')}
+						class={clsx('group relative mx-auto max-h-[450px]')}
 						animate:flip={{ duration: 400 }}
 						transition:fade={{ duration: 400 }}
 					>
@@ -80,7 +80,7 @@
 								src={imagePreviews?.at(index)}
 								alt={image.name}
 								class={clsx(
-									'rounded-lg xl:max-h-[450px]',
+									'max-h-[450px] rounded-lg',
 									images.length === 1 ? 'object-contain' : 'aspect-square object-cover'
 								)}
 							/>
