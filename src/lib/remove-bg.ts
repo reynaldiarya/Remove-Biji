@@ -4,10 +4,7 @@ import { imageSchema } from './schema/image-schema';
 export const removeBg = async (images: FileList | undefined) => {
 	if (!images) throw new Error('Tidak ada gambar yang dikirim');
 
-	const payload = imageSchema
-		.array()
-		.max(4, 'Saat ini hanya bisa mengupload sampai 4 gambar')
-		.safeParse(Array.from(images));
+	const payload = imageSchema.array().safeParse(Array.from(images));
 	if (!payload.success) {
 		throw payload.error;
 	}
@@ -36,5 +33,5 @@ export const removeBg = async (images: FileList | undefined) => {
 		throw new Error(data.message as string);
 	}
 
-	return data.images as string[];
+	return data as { images: string[]; creditsAmount: number | undefined };
 };

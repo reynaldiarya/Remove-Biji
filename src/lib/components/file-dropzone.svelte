@@ -4,15 +4,16 @@
 
 	type Props = {
 		images: FileList | undefined;
+		multiple: boolean;
 	};
 
-	let { images = $bindable() }: Props = $props();
+	let { images = $bindable(), multiple }: Props = $props();
 </script>
 
 <FileDropzone
 	name="files"
 	bind:files={images}
-	multiple
+	{multiple}
 	accept=".jpg, .jpeg, .png, .webp"
 	id="file-upload"
 >

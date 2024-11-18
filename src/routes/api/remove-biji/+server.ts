@@ -1,26 +1,38 @@
-import { guestLimiter, regularUserLimiter } from '$lib/rate-limiter';
+import { guestLimiter } from '$lib/rate-limiter';
 import { error } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
 import { removeBackground } from '@imgly/background-removal-node';
 import { env } from '$env/dynamic/private';
 import { rotateImageToMatch } from '$lib/image';
 import { withCatch } from '@tfkhdyt/with-catch';
+import { db } from '$lib/server/db';
+import * as table from '$lib/server/db/schema';
+import { eq, sql } from 'drizzle-orm';
 
 export const POST: RequestHandler = async (event) => {
-	if (env.NODE_ENV === 'production') {
-		if (event.locals.user && (await regularUserLimiter.isLimited(event))) {
-			throw error(429, 'Kamu telah terlalu banyak mencoba, coba lagi nanti');
-		}
-
-		if (await guestLimiter.isLimited(event)) {
-			throw error(429, 'Akun tamu hanya dapat menggunakan 3 kali per hari, coba lagi besok');
-		}
-	}
-
-	const { request } = event;
+	const { request, locals } = event;
 
 	const formData = await request.formData();
 	const files = formData.getAll('image');
+
+	const isLimited = await guestLimiter.isLimited(event);
+
+	if (env.NODE_ENV === 'production') {
+		if (!locals.user && isLimited) {
+			throw error(429, 'Kuota free tier-mu sudah habis, daftar untuk mendapatkan 5 saldo gratis');
+		}
+
+		if (locals.user?.creditsAmount === 0 && isLimited) {
+			throw error(
+				429,
+				'Kamu hanya mendapatkan kuota free tier 3 kali per hari, silakan topup terlebih dahulu'
+			);
+		}
+
+		if (locals.user?.creditsAmount && files.length > locals.user.creditsAmount) {
+			throw error(429, 'Saldomu tidak mencukupi, silakan topup terlebih dahulu');
+		}
+	}
 
 	const result = await Promise.allSettled(
 		files.map(async (image) => {
@@ -46,7 +58,19 @@ export const POST: RequestHandler = async (event) => {
 		}
 	}
 
-	return new Response(JSON.stringify({ images: output }), {
+	let creditsAmount = undefined;
+	if (locals.user && locals.user.creditsAmount && locals.user.creditsAmount > 0) {
+		const row = await db
+			.update(table.credits)
+			.set({
+				amount: sql`${table.credits.amount} - ${files.length}`
+			})
+			.where(eq(table.credits.id, locals.user.id))
+			.returning({ amount: table.credits.amount });
+		creditsAmount = row.at(0)?.amount;
+	}
+
+	return new Response(JSON.stringify({ images: output, creditsAmount }), {
 		headers: { 'Content-Type': 'application/json' }
 	});
 };

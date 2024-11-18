@@ -28,19 +28,21 @@ export async function createSession(token: string, userId: number) {
 
 export async function validateSessionToken(token: string) {
 	const sessionId = encodeHexLowerCase(sha256(new TextEncoder().encode(token)));
+
 	const [result] = await db
 		.select({
-			// Adjust user table here to tweak returned data
 			user: {
 				id: table.user.id,
 				name: table.user.name,
 				email: table.user.email,
-				picture: table.user.picture
+				picture: table.user.picture,
+				creditsAmount: table.credits.amount
 			},
 			session: table.session
 		})
 		.from(table.session)
 		.innerJoin(table.user, eq(table.session.userId, table.user.id))
+		.leftJoin(table.credits, eq(table.user.id, table.credits.id))
 		.where(eq(table.session.id, sessionId));
 
 	if (!result) {
@@ -61,6 +63,15 @@ export async function validateSessionToken(token: string) {
 			.update(table.session)
 			.set({ expiresAt: session.expiresAt })
 			.where(eq(table.session.id, session.id));
+	}
+
+	const row2 = await db
+		.select({ id: table.credits.id })
+		.from(table.credits)
+		.where(eq(table.credits.id, user.id));
+	const credits = row2.at(0);
+	if (!credits) {
+		await db.insert(table.credits).values({ id: user.id, amount: 5 });
 	}
 
 	return { session, user };

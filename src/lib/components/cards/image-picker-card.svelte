@@ -12,6 +12,7 @@
 	import { z } from 'zod';
 	import BgReplaceIcon from '$lib/icons/bg-replace-icon.svelte';
 	import { withCatch } from '@tfkhdyt/with-catch';
+	import { getCreditsStore } from '$lib/stores/credit.svelte';
 
 	type Props = {
 		images: FileList | undefined;
@@ -28,11 +29,13 @@
 	}: Props = $props();
 	const isImageExist = $derived(images && images.length > 0);
 
+	const creditStore = getCreditsStore();
+
 	async function handleRemoveBg() {
 		isLoading = true;
 		outputs = [];
 
-		const [err, removedImages] = await withCatch(removeBg(images));
+		const [err, data] = await withCatch(removeBg(images));
 		if (err) {
 			if (err instanceof z.ZodError) {
 				toast.error(err.issues[0].message);
@@ -43,16 +46,20 @@
 		}
 
 		await Promise.allSettled(
-			removedImages!.map(async (image) => {
+			data!.images!.map(async (image) => {
 				const blob = base64ToBlob(image);
 				outputs.push(blob);
 			})
 		);
 
+		creditStore.setAmount(data?.creditsAmount ?? 0);
+
 		toast.success('Proses berhasil');
 
 		isLoading = false;
 	}
+
+	const canMultiple = $derived(creditStore.amount ? creditStore.amount > 0 : false);
 </script>
 
 <div class="card w-full md:w-1/2">
@@ -84,7 +91,7 @@
 									images.length === 1 ? 'object-contain' : 'aspect-square object-cover'
 								)}
 							/>
-							{#if outputs.length === 0}
+							{#if outputs.length === 0 && !isLoading}
 								<div
 									class={clsx(
 										'absolute inset-0 rounded-lg opacity-0 transition-opacity duration-200',
@@ -105,7 +112,7 @@
 			</div>
 		{:else}
 			<div>
-				<FileDropzone bind:images />
+				<FileDropzone bind:images multiple={canMultiple} />
 			</div>
 		{/if}
 	</section>

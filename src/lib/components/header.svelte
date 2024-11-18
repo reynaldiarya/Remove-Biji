@@ -3,10 +3,13 @@
 	import CloseIcon from '$lib/icons/close-icon.svelte';
 	import GoogleIcon from '$lib/icons/google-icon.svelte';
 	import HamburgerIcon from '$lib/icons/hamburger-icon.svelte';
+	import LoadingIcon from '$lib/icons/loading-icon.svelte';
+	import { getCreditsStore } from '$lib/stores/credit.svelte';
 	import { Avatar, LightSwitch } from '@skeletonlabs/skeleton';
 	import { popup } from '@skeletonlabs/skeleton';
 	import type { PopupSettings } from '@skeletonlabs/skeleton';
 	import clsx from 'clsx';
+	import { onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
 	import { setupViewTransition } from 'sveltekit-view-transition';
 
@@ -16,10 +19,17 @@
 			name: string | null;
 			email: string;
 			picture: string | null;
+			creditsAmount: number | null;
 		} | null;
 	};
 
 	let { user }: Props = $props();
+
+	const creditStore = getCreditsStore();
+
+	onMount(() => {
+		creditStore.setAmount(user?.creditsAmount ?? 0);
+	});
 
 	const profilePopup: PopupSettings = {
 		// Represents the type of event that opens/closed the popup
@@ -61,6 +71,23 @@
 		<h2 class="h6 text-gray-600 dark:text-gray-400">Hilangkan biji mu dengan mudah</h2>
 	</div>
 	<div class="hidden items-center space-x-8 md:flex">
+		{#if user}
+			<div class="flex items-center">
+				<img src="/favicon.ico" alt="biji" class="mr-2 size-4" />
+				<span class="text-gray-600 dark:text-gray-400">
+					{#if creditStore.amount !== null}
+						{creditStore.amount} biji
+					{:else}
+						<LoadingIcon class="size-4 animate-spin" />
+					{/if}
+				</span>
+			</div>
+			<a
+				href="/topup"
+				class="text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-500"
+				>Top Up</a
+			>
+		{/if}
 		<a
 			href="/pricing"
 			class="text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-500"

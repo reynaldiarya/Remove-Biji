@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { packages } from '$lib/constants/price';
-	import BuyIcon from '$lib/icons/buy-icon.svelte';
+	// import BuyIcon from '$lib/icons/buy-icon.svelte';
 	import { formatRupiah } from '$lib/utils';
 	import SvelteSeo from 'svelte-seo';
 
@@ -68,8 +68,8 @@
 <div class="mt-6 space-y-5 text-center">
 	<p class="text-gray-600 dark:text-gray-400">*1 biji = 1 gambar</p>
 
-	<a href="/topup" class="variant-filled btn">
+	<!-- <a href="/topup" class="variant-filled btn">
 		<BuyIcon class="mr-2 size-5" />
 		Beli sekarang
-	</a>
+	</a> -->
 </div>

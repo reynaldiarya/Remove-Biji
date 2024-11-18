@@ -33,7 +33,7 @@
 	<section class="overflow-y-auto p-4">
 		{#if outputs && outputs.length > 0}
 			<div
-				transition:fade={{ duration: 400 }}
+				in:fade={{ duration: 400 }}
 				class={clsx(
 					'grid gap-4',
 					match(outputs.length)
