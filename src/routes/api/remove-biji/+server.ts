@@ -28,10 +28,10 @@ export const POST: RequestHandler = async (event) => {
 				'Kamu hanya mendapatkan kuota free tier 3 kali per hari, silakan topup terlebih dahulu'
 			);
 		}
+	}
 
-		if (locals.user?.creditsAmount && files.length > locals.user.creditsAmount) {
-			throw error(429, 'Saldomu tidak mencukupi, silakan topup terlebih dahulu');
-		}
+	if (locals.user?.creditsAmount && files.length > locals.user.creditsAmount) {
+		throw error(429, 'Saldomu tidak mencukupi, silakan topup terlebih dahulu');
 	}
 
 	const result = await Promise.allSettled(
