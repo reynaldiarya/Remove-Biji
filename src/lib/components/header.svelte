@@ -145,6 +145,7 @@
 		'fixed inset-y-0 right-0 z-50 w-64 space-y-3 bg-surface-100 p-4 shadow-lg transition-all duration-300 dark:bg-surface-900',
 		isOpen ? 'translate-x-0' : 'translate-x-full'
 	)}
+	use:transition={'sidebar'}
 >
 	<button onclick={handleToggle} class="ml-auto" aria-label="close">
 		<CloseIcon class="size-5" />
