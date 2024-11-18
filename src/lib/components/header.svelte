@@ -22,6 +22,8 @@
 			creditsAmount: number | null;
 		} | null;
 	};
+	import BuyIcon from '$lib/icons/buy-icon.svelte';
+	import BillIcon from '$lib/icons/bill-icon.svelte';
 
 	let { user }: Props = $props();
 
@@ -72,26 +74,23 @@
 	</div>
 	<div class="hidden items-center space-x-8 md:flex">
 		{#if user}
-			<div class="flex items-center">
-				<img src="/favicon.ico" alt="biji" class="mr-2 size-4" />
-				<span class="text-gray-600 dark:text-gray-400">
-					{#if creditStore.amount !== null}
-						{creditStore.amount} biji
-					{:else}
-						<LoadingIcon class="size-4 animate-spin" />
-					{/if}
-				</span>
-			</div>
-			<a
-				href="/topup"
-				class="text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-500"
-				>Top Up</a
+			<span class="flex items-center">
+				Jumlah saldomu:
+				<img src="/favicon.ico" alt="biji" class="mx-2 size-4" />
+				{#if creditStore.amount !== null}
+					{creditStore.amount}
+				{:else}
+					<LoadingIcon class="size-4 animate-spin" />
+				{/if}
+			</span>
+			<a href="/topup" class="flex items-center hover:text-gray-600 dark:hover:text-gray-300">
+				<BuyIcon class="mr-2 size-5" />
+				Top Up</a
 			>
 		{/if}
-		<a
-			href="/pricing"
-			class="text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-500"
-			>Daftar Harga</a
+		<a href="/pricing" class="flex items-center hover:text-gray-600 dark:hover:text-gray-300">
+			<BillIcon class="mr-2 size-5" />
+			Daftar Harga</a
 		>
 		{#if user}
 			<div use:popup={profilePopup}>
@@ -102,7 +101,15 @@
 		{/if}
 		<LightSwitch />
 	</div>
-	<div class="md:hidden">
+	<div class="flex items-center space-x-4 md:hidden">
+		<div class="flex items-center">
+			<img src="/favicon.ico" alt="biji" class="mx-2 size-4" />
+			{#if creditStore.amount !== null}
+				{creditStore.amount}
+			{:else}
+				<LoadingIcon class="size-4 animate-spin" />
+			{/if}
+		</div>
 		<button onclick={handleToggle} aria-label="Menu"> <HamburgerIcon class="size-10" /> </button>
 	</div>
 </header>
@@ -137,11 +144,33 @@
 		<CloseIcon class="size-5" />
 	</button>
 	<div class="w-full space-y-3">
+		<div class="flex items-center justify-between rounded px-4 py-2">
+			<div>Jumlah saldomu</div>
+			<div class="flex items-center">
+				{#if creditStore.amount !== null}
+					<img src="/favicon.ico" alt="biji" class="mx-2 size-4" />
+					{creditStore.amount}
+				{:else}
+					<LoadingIcon class="size-4 animate-spin" />
+				{/if}
+			</div>
+		</div>
+		<a
+			href="/topup"
+			class="flex items-center justify-between rounded px-4 py-2 hover:bg-surface-300 dark:hover:bg-surface-800"
+			onclick={handleToggle}
+		>
+			<span>Top Up</span>
+			<BuyIcon class="size-5" />
+		</a>
 		<a
 			href="/pricing"
-			class="block rounded px-4 py-2 hover:bg-surface-300 dark:hover:bg-surface-800"
-			onclick={handleToggle}>Daftar Harga</a
+			class="flex items-center justify-between rounded px-4 py-2 hover:bg-surface-300 dark:hover:bg-surface-800"
+			onclick={handleToggle}
 		>
+			<span>Daftar Harga</span>
+			<BillIcon class="size-5" />
+		</a>
 		<div class="flex items-center justify-between rounded px-4 py-2">
 			Tema
 			<LightSwitch />
