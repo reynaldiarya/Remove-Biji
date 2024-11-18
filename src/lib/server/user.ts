@@ -18,6 +18,8 @@ export async function createUser(googleId: string, email: string, name: string, 
 		throw new Error('Failed to create user');
 	}
 
+	await db.insert(table.credits).values({ id: user.id, amount: 5 });
+
 	return user;
 }
 

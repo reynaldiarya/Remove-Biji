@@ -65,15 +65,6 @@ export async function validateSessionToken(token: string) {
 			.where(eq(table.session.id, session.id));
 	}
 
-	const row2 = await db
-		.select({ id: table.credits.id })
-		.from(table.credits)
-		.where(eq(table.credits.id, user.id));
-	const credits = row2.at(0);
-	if (!credits) {
-		await db.insert(table.credits).values({ id: user.id, amount: 5 });
-	}
-
 	return { session, user };
 }
 
