@@ -60,7 +60,8 @@
 	<div class="hidden items-center space-x-8 md:flex">
 		<a
 			href="/pricing"
-			class="text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-500">Harga</a
+			class="text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-500"
+			>Daftar Harga</a
 		>
 		{#if user}
 			<div use:popup={profilePopup}>
@@ -106,7 +107,7 @@
 	<div class="w-full space-y-3">
 		<a
 			href="/pricing"
-			class="block rounded px-4 py-2 hover:bg-surface-300 dark:hover:bg-surface-800">Harga</a
+			class="block rounded px-4 py-2 hover:bg-surface-300 dark:hover:bg-surface-800">Daftar Harga</a
 		>
 		<div class="flex items-center justify-between rounded px-4 py-2">
 			Tema

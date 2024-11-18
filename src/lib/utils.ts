@@ -32,3 +32,13 @@ export function base64ToBlob(base64: string) {
 	const byteArray = new Uint8Array(byteArrays);
 	return new Blob([byteArray], { type: 'image/png' });
 }
+
+const formatter = new Intl.NumberFormat('id-ID', {
+	style: 'currency',
+	currency: 'IDR',
+	trailingZeroDisplay: 'stripIfInteger'
+});
+
+export function formatRupiah(number: number) {
+	return formatter.format(number);
+}
