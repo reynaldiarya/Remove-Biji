@@ -33,6 +33,7 @@
 	<section class="overflow-y-auto p-4">
 		{#if outputs && outputs.length > 0}
 			<div
+				transition:fade={{ duration: 400 }}
 				class={clsx(
 					'grid gap-4',
 					match(outputs.length)
@@ -42,11 +43,7 @@
 			>
 				<!-- eslint-disable-next-line @typescript-eslint/no-unused-vars -->
 				{#each outputs as _, i (i)}
-					<div
-						class="max-h-[450px]' group relative mx-auto"
-						animate:flip={{ duration: 400 }}
-						transition:fade={{ duration: 400 }}
-					>
+					<div class="max-h-[450px]' group relative mx-auto" animate:flip={{ duration: 400 }}>
 						<img
 							src={outputPreviews[i]}
 							alt="output {i + 1}"
