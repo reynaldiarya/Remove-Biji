@@ -76,7 +76,7 @@
 		<LightSwitch />
 	</div>
 	<div class="md:hidden">
-		<button onclick={handleToggle}> <HamburgerIcon class="size-10" /> </button>
+		<button onclick={handleToggle} aria-label="Menu"> <HamburgerIcon class="size-10" /> </button>
 	</div>
 </header>
 
@@ -106,7 +106,9 @@
 		isOpen ? 'translate-x-0' : 'translate-x-full'
 	)}
 >
-	<button onclick={handleToggle} class="ml-auto"> <CloseIcon class="size-5" /> </button>
+	<button onclick={handleToggle} class="ml-auto" aria-label="close">
+		<CloseIcon class="size-5" />
+	</button>
 	<div class="w-full space-y-3">
 		<a
 			href="/pricing"
