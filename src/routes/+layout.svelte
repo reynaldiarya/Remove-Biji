@@ -1,20 +1,21 @@
 <script lang="ts">
+	import { env } from '$env/dynamic/public';
+	import Footer from '$lib/components/footer.svelte';
+	import Header from '$lib/components/header.svelte';
+	import { arrow, autoUpdate, computePosition, flip, offset, shift } from '@floating-ui/dom';
 	import '@fontsource/roboto/100.css';
 	import '@fontsource/roboto/300.css';
 	import '@fontsource/roboto/400.css';
 	import '@fontsource/roboto/500.css';
 	import '@fontsource/roboto/700.css';
 	import '@fontsource/roboto/900.css';
+	import { storePopup } from '@skeletonlabs/skeleton';
+	import type { Snippet } from 'svelte';
 	import { Toaster } from 'svelte-french-toast';
 	import SvelteSeo from 'svelte-seo';
+	import { setupViewTransition } from 'sveltekit-view-transition';
 	import '../app.css';
-	import { env } from '$env/dynamic/public';
-	import { computePosition, autoUpdate, offset, shift, flip, arrow } from '@floating-ui/dom';
-	import { storePopup } from '@skeletonlabs/skeleton';
-	import Header from '$lib/components/header.svelte';
-	import Footer from '$lib/components/footer.svelte';
 	import type { LayoutData } from './$types';
-	import type { Snippet } from 'svelte';
 
 	type Props = {
 		data: LayoutData;
@@ -29,6 +30,8 @@
 	const url = 'https://remove.biji.my.id';
 
 	storePopup.set({ computePosition, autoUpdate, offset, shift, flip, arrow });
+
+	setupViewTransition();
 </script>
 
 <svelte:head>

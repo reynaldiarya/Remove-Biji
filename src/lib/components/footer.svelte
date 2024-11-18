@@ -6,6 +6,7 @@
 	import TwitterIcon from '$lib/icons/twitter-icon.svelte';
 	import YoutubeIcon from '$lib/icons/youtube-icon.svelte';
 	import type { Component } from 'svelte';
+	import { setupViewTransition } from 'sveltekit-view-transition';
 
 	type SocialMedia = {
 		icon: Component;
@@ -38,10 +39,13 @@
 			url: 'https://www.youtube.com/@tfkhdyt'
 		}
 	];
+
+	const { transition } = setupViewTransition();
 </script>
 
 <footer
 	class="flex flex-wrap items-center justify-center gap-4 py-4 text-gray-600 md:justify-between dark:text-gray-400"
+	use:transition={'footer'}
 >
 	<div class="flex flex-wrap items-center justify-center gap-x-2 text-sm md:text-base">
 		<span>Copyright © 2024 Taufik Hidayat</span>

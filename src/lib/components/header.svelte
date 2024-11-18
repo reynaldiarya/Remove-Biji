@@ -8,6 +8,7 @@
 	import type { PopupSettings } from '@skeletonlabs/skeleton';
 	import clsx from 'clsx';
 	import { fade } from 'svelte/transition';
+	import { setupViewTransition } from 'sveltekit-view-transition';
 
 	type Props = {
 		user: {
@@ -34,6 +35,8 @@
 	function handleToggle() {
 		isOpen = !isOpen;
 	}
+
+	const { transition } = setupViewTransition();
 </script>
 
 {#snippet loginWithGoogle(className?: string)}
@@ -46,7 +49,7 @@
 	</a>
 {/snippet}
 
-<header class="flex items-center justify-between pb-4">
+<header class="flex items-center justify-between pb-4" use:transition={'header'}>
 	<div>
 		<a class="h2 flex items-center font-bold" href="/">
 			<div class="mr-2 flex items-center">
@@ -107,7 +110,8 @@
 	<div class="w-full space-y-3">
 		<a
 			href="/pricing"
-			class="block rounded px-4 py-2 hover:bg-surface-300 dark:hover:bg-surface-800">Daftar Harga</a
+			class="block rounded px-4 py-2 hover:bg-surface-300 dark:hover:bg-surface-800"
+			onclick={handleToggle}>Daftar Harga</a
 		>
 		<div class="flex items-center justify-between rounded px-4 py-2">
 			Tema
