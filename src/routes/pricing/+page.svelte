@@ -42,17 +42,19 @@
 	<table class="table table-hover mx-auto max-w-xl">
 		<thead>
 			<tr>
-				<th>Jumlah biji*</th>
-				<th>Harga</th>
-				<th>Harga per biji</th>
+				<th class="text-center">Jumlah biji*</th>
+				<th class="text-center">Harga</th>
+				<th class="text-center">Harga per biji</th>
 			</tr>
 		</thead>
 		<tbody>
 			{#each packages as row}
 				<tr>
-					<td class="font-medium">{row.value} biji</td>
-					<td>{formatRupiah(row.totalPrice)}</td>
-					<td>{formatRupiah(row.pricePerImage)} / biji</td>
+					<td class="flex items-center font-medium"
+						><img src="/favicon.ico" alt="biji" class="mx-2 size-4" /> {row.value}
+					</td>
+					<td class="text-right">{formatRupiah(row.totalPrice)}</td>
+					<td class="text-right">{formatRupiah(row.pricePerImage)} / biji</td>
 				</tr>
 			{/each}
 		</tbody>
@@ -66,7 +68,9 @@
 </div>
 
 <div class="mt-6 space-y-5 text-center">
-	<p class="text-gray-600 dark:text-gray-400">*1 biji = 1 gambar</p>
+	<p class="flex items-center justify-center text-gray-600 dark:text-gray-400">
+		*1 <img src="/favicon.ico" alt="biji" class="mx-2 size-4" /> = 1 gambar
+	</p>
 
 	<!-- <a href="/topup" class="variant-filled btn">
 		<BuyIcon class="mr-2 size-5" />
