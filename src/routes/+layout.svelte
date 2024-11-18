@@ -60,7 +60,7 @@
 	}}
 />
 
-<main class="container mx-auto flex min-h-screen flex-col px-4 md:px-6 lg:px-8">
+<main class="mx-auto flex min-h-screen flex-col px-4 lg:container md:px-6 lg:px-8">
 	<div class="flex-grow py-8">
 		<Header user={data.user} />
 		<div class="py-8">

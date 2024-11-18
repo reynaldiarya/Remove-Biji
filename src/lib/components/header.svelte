@@ -117,6 +117,7 @@
 	</div>
 </header>
 
+<!-- profile popup -->
 <div class="card max-w-56 p-4 shadow-xl" data-popup="profilePopup">
 	<div>
 		<p>Hello, {user?.name}</p>
@@ -126,6 +127,7 @@
 	<div class="bg-surface-100-800-token arrow"></div>
 </div>
 
+<!-- backdrop -->
 {#if isOpen}
 	<!-- svelte-ignore a11y_click_events_have_key_events -->
 	<!-- eslint-disable-next-line svelte/valid-compile -->
@@ -137,6 +139,7 @@
 	></div>
 {/if}
 
+<!-- mobile sidebar -->
 <div
 	class={clsx(
 		'fixed inset-y-0 right-0 z-50 w-64 space-y-3 bg-surface-100 p-4 shadow-lg transition-all duration-300 dark:bg-surface-900',
