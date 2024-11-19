@@ -91,7 +91,11 @@
 			1 <img src="/favicon.ico" alt="biji" class="mx-2 size-4" /> = 1 gambar
 		</p>
 
-		<button type="submit" class="variant-filled btn" disabled={$delayed || !$form.package}>
+		<button
+			type="submit"
+			class="plausible-event-name=Top+Up variant-filled btn"
+			disabled={$delayed || !$form.package}
+		>
 			<BuyIcon class="mr-2 size-5" />
 			Beli sekarang (QRIS)
 		</button>
