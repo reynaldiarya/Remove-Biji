@@ -77,7 +77,7 @@
 	<div class="hidden items-center space-x-8 lg:flex">
 		{#if user}
 			<span class="flex items-center">
-				Jumlah saldomu:
+				Jumlah bijimu:
 				<img src="/favicon.ico" alt="biji" class="mx-2 size-4" />
 				{#if creditStore.amount !== null}
 					{creditStore.amount}
@@ -161,7 +161,7 @@
 	<div class="w-full space-y-3">
 		{#if user}
 			<div class="flex items-center justify-between rounded px-4 py-2">
-				<div>Jumlah saldomu</div>
+				<div>Jumlah bijimu</div>
 				<div class="flex items-center">
 					{#if creditStore.amount !== null}
 						<img src="/favicon.ico" alt="biji" class="mx-2 size-4" />
