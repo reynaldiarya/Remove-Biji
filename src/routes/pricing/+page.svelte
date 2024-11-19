@@ -51,6 +51,13 @@
 			</tr>
 		</thead>
 		<tbody>
+			<tr>
+				<td class="flex items-center font-medium"
+					><img src="/favicon.ico" alt="biji" class="mx-2 size-4" /> 3 / hari***
+				</td>
+				<td>Gratis</td>
+				<td>Gratis</td>
+			</tr>
 			{#each packages as row}
 				<tr>
 					<td class="flex items-center font-medium"
@@ -77,4 +84,5 @@
 	<p class="flex items-center justify-center text-gray-600 dark:text-gray-400">
 		**Belum termasuk biaya admin
 	</p>
+	<p class="flex items-center justify-center text-gray-600 dark:text-gray-400">**Non-akumulatif</p>
 </div>
