@@ -5,6 +5,7 @@
 	import { formatRupiah } from '$lib/utils';
 	import { format } from 'date-fns';
 	import { id } from 'date-fns/locale/id';
+	import MoneyIcon from '$lib/icons/money-icon.svelte';
 
 	type Props = {
 		data: PageData;
@@ -79,11 +80,20 @@
 						>{!!invoice.createdAt &&
 							format(invoice.createdAt, 'dd MMM yyyy, HH:mm', { locale: id })}</td
 					>
-					<td class="text-right"
-						>{invoice.paidAt
-							? format(invoice.paidAt, 'dd MMM yyyy, HH:mm', { locale: id })
-							: '-'}</td
-					>
+					<td>
+						{#if invoice.paidAt}
+							<span class="flex justify-end">
+								{format(invoice.paidAt, 'dd MMM yyyy, HH:mm', { locale: id })}
+							</span>
+						{:else}
+							<div class="flex justify-center">
+								<a href={invoice.checkoutUrl} class="variant-filled-surface btn btn-sm">
+									<MoneyIcon class="mr-2 size-5" />
+									Bayar</a
+								>
+							</div>
+						{/if}
+					</td>
 				</tr>
 			{/each}
 		</tbody>

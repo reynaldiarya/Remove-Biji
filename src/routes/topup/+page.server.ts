@@ -49,7 +49,7 @@ export const actions = {
 			.update(merchant_code + merchant_ref + pkg?.totalPrice)
 			.digest('hex');
 
-		const expiry = Math.floor(Date.now() / 1000) + 24 * 60 * 60; //  24 jam
+		const expiry = Math.floor(Date.now() / 1000) + 60 * 60; // 1 jam
 
 		const payload = {
 			method: 'QRIS2',
@@ -96,7 +96,8 @@ export const actions = {
 			status: invoice.status,
 			expiredTime: new Date(invoice.expired_time * 1000),
 			package: form.data.package,
-			amount: invoice.amount
+			amount: invoice.amount,
+			checkoutUrl: invoice.checkout_url
 		});
 
 		return redirect(302, invoice.checkout_url);

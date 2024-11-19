@@ -43,6 +43,13 @@
       "when": 1731981368729,
       "tag": "0005_puzzling_vampiro",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1731984952998,
+      "tag": "0006_stale_purple_man",
+      "breakpoints": true
     }
   ]
 }

@@ -41,6 +41,7 @@ export const invoices = pgTable('invoices', {
 	paidAt: timestamp({ withTimezone: true, mode: 'date' }),
 	package: integer().notNull(),
 	amount: integer().notNull(),
+	checkoutUrl: text(),
 	createdAt: timestamp({ withTimezone: true, mode: 'date' }).defaultNow()
 });
 
