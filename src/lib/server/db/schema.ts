@@ -12,7 +12,8 @@ export const user = pgTable('users', {
 
 export const userRelations = relations(user, ({ one, many }) => ({
 	creditsAmount: one(credits),
-	sessions: many(session)
+	sessions: many(session),
+	invoices: many(invoices)
 }));
 
 export const session = pgTable('sessions', {
@@ -28,6 +29,18 @@ export const credits = pgTable('credits', {
 		.primaryKey()
 		.references(() => user.id),
 	amount: integer().notNull().default(5)
+});
+
+export const invoices = pgTable('invoices', {
+	id: varchar().primaryKey(),
+	userId: integer()
+		.notNull()
+		.references(() => user.id),
+	status: varchar().notNull().default('UNPAID'),
+	expiredTime: timestamp({ withTimezone: true, mode: 'date' }).notNull(),
+	paidAt: timestamp({ withTimezone: true, mode: 'date' }),
+	package: integer().notNull(),
+	amount: integer().notNull()
 });
 
 export type Session = typeof session.$inferSelect;

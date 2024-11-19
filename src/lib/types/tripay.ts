@@ -1,0 +1,40 @@
+export type TripayInvoiceResponse = {
+	reference: string;
+	merchant_ref: string;
+	payment_selection_type: string;
+	payment_method: string;
+	payment_name: string;
+	customer_name: string;
+	customer_email: string;
+	customer_phone: null;
+	callback_url: string;
+	return_url: string;
+	amount: number;
+	fee_merchant: number;
+	fee_customer: number;
+	total_fee: number;
+	amount_received: number;
+	pay_code: null;
+	pay_url: null;
+	checkout_url: string;
+	status: string;
+	expired_time: number;
+	qr_string: string;
+	qr_url: string;
+};
+
+export type TripayCallbackResponse = {
+	reference: string;
+	merchant_ref: string;
+	payment_method: string;
+	payment_method_code: string;
+	total_amount: number;
+	fee_merchant: number;
+	fee_customer: number;
+	total_fee: number;
+	amount_received: number;
+	is_closed_payment: number;
+	status: string;
+	paid_at: number;
+	note: null;
+};
