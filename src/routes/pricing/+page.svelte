@@ -3,9 +3,12 @@
 	// import BuyIcon from '$lib/icons/buy-icon.svelte';
 	import { formatRupiah } from '$lib/utils';
 	import SvelteSeo from 'svelte-seo';
+	import { setupViewTransition } from 'sveltekit-view-transition';
 
 	const title = 'Daftar Harga - Remove Biji';
 	const description = 'Daftar Harga Remove Biji';
+
+	const { transition } = setupViewTransition();
 </script>
 
 <svelte:head>
@@ -31,7 +34,7 @@
 	}}
 />
 
-<div class="space-y-2 text-center">
+<div class="space-y-2 text-center" use:transition={'heading'}>
 	<h1 class="h1 font-bold">Daftar Harga</h1>
 	<h2 class="h5 text-gray-600 dark:text-gray-400">91% lebih murah dibanding remove.bg</h2>
 </div>
@@ -43,7 +46,7 @@
 		<thead>
 			<tr>
 				<th class="text-center">Jumlah biji*</th>
-				<th class="text-center">Harga</th>
+				<th class="text-center">Harga**</th>
 				<th class="text-center">Harga per biji</th>
 			</tr>
 		</thead>
@@ -67,13 +70,11 @@
 	</table>
 </div>
 
-<div class="mt-6 space-y-5 text-center">
+<div class="mt-6 text-center">
 	<p class="flex items-center justify-center text-gray-600 dark:text-gray-400">
 		*1 <img src="/favicon.ico" alt="biji" class="mx-2 size-4" /> = 1 gambar
 	</p>
-
-	<!-- <a href="/topup" class="variant-filled btn">
-		<BuyIcon class="mr-2 size-5" />
-		Beli sekarang
-	</a> -->
+	<p class="flex items-center justify-center text-gray-600 dark:text-gray-400">
+		**Belum termasuk biaya admin
+	</p>
 </div>
