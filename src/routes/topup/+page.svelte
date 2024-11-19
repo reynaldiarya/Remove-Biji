@@ -50,7 +50,7 @@
 
 <div class="space-y-2 text-center">
 	<h1 class="h1 font-bold">Top Up</h1>
-	<h2 class="h5 text-gray-600 dark:text-gray-400">Isi ulang biji mu</h2>
+	<h2 class="h5 text-gray-600 dark:text-gray-400">Isi ulang bijimu</h2>
 </div>
 
 <form method="POST" use:enhance>

@@ -24,7 +24,7 @@
 
 	let { children, data }: Props = $props();
 
-	const title = 'Remove Biji - Hilangkan biji mu dengan mudah';
+	const title = 'Remove Biji - Hilangkan bijimu dengan mudah';
 	const description =
 		'Remove Biji adalah aplikasi background remover minimalis yang mudah digunakan';
 

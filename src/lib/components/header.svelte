@@ -70,7 +70,7 @@
 			</div>
 			Remove Biji
 		</a>
-		<h2 class="h6 text-gray-600 dark:text-gray-400">Hilangkan biji mu dengan mudah</h2>
+		<h2 class="h6 text-gray-600 dark:text-gray-400">Hilangkan bijimu dengan mudah</h2>
 	</div>
 	<div class="hidden items-center space-x-8 lg:flex">
 		{#if user}
