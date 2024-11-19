@@ -61,6 +61,7 @@
 		"@pilcrowjs/object-parser": "^0.0.4",
 		"@tfkhdyt/with-catch": "npm:@jsr/tfkhdyt__with-catch@^0.3.0",
 		"arctic": "^2.2.2",
+		"date-fns": "^4.1.0",
 		"drizzle-orm": "^0.36.3",
 		"postgres": "^3.4.5",
 		"sharp": "^0.33.5",

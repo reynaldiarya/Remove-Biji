@@ -70,4 +70,4 @@
 	<Footer />
 </main>
 
-<Toaster position="top-right" />
+<Toaster position="bottom-right" />

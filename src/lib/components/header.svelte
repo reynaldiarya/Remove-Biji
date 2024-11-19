@@ -24,6 +24,7 @@
 	};
 	import BuyIcon from '$lib/icons/buy-icon.svelte';
 	import BillIcon from '$lib/icons/bill-icon.svelte';
+	import InvoiceIcon from '$lib/icons/invoice-icon.svelte';
 
 	let { user }: Props = $props();
 
@@ -87,6 +88,10 @@
 				<BuyIcon class="mr-2 size-5" />
 				Top Up</a
 			>
+			<a href="/invoices" class="flex items-center hover:text-gray-600 dark:hover:text-gray-300">
+				<InvoiceIcon class="mr-2 size-5" />
+				Invoice</a
+			>
 		{/if}
 		<a href="/pricing" class="flex items-center hover:text-gray-600 dark:hover:text-gray-300">
 			<BillIcon class="mr-2 size-5" />
@@ -145,7 +150,6 @@
 		'fixed inset-y-0 right-0 z-50 w-64 space-y-3 bg-surface-100 p-4 shadow-lg transition-all duration-300 dark:bg-surface-900',
 		isOpen ? 'translate-x-0' : 'translate-x-full'
 	)}
-	use:transition={'sidebar'}
 >
 	<button onclick={handleToggle} class="ml-auto" aria-label="close">
 		<CloseIcon class="size-5" />
@@ -170,6 +174,14 @@
 			>
 				<span>Top Up</span>
 				<BuyIcon class="size-5" />
+			</a>
+			<a
+				href="/invoices"
+				class="flex items-center justify-between rounded px-4 py-2 hover:bg-surface-300 dark:hover:bg-surface-800"
+				onclick={handleToggle}
+			>
+				<span>Invoice</span>
+				<InvoiceIcon class="size-5" />
 			</a>
 		{/if}
 		<a

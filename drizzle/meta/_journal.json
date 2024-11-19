@@ -36,6 +36,13 @@
       "when": 1731979053822,
       "tag": "0004_clammy_prowler",
       "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1731981368729,
+      "tag": "0005_puzzling_vampiro",
+      "breakpoints": true
     }
   ]
 }

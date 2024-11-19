@@ -40,7 +40,8 @@ export const invoices = pgTable('invoices', {
 	expiredTime: timestamp({ withTimezone: true, mode: 'date' }).notNull(),
 	paidAt: timestamp({ withTimezone: true, mode: 'date' }),
 	package: integer().notNull(),
-	amount: integer().notNull()
+	amount: integer().notNull(),
+	createdAt: timestamp({ withTimezone: true, mode: 'date' }).defaultNow()
 });
 
 export type Session = typeof session.$inferSelect;
