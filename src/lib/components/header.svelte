@@ -25,6 +25,7 @@
 	import BuyIcon from '$lib/icons/buy-icon.svelte';
 	import BillIcon from '$lib/icons/bill-icon.svelte';
 	import InvoiceIcon from '$lib/icons/invoice-icon.svelte';
+	import LogoutIcon from '$lib/icons/logout-icon.svelte';
 
 	let { user }: Props = $props();
 
@@ -127,7 +128,10 @@
 	<div>
 		<p>Hello, {user?.name}</p>
 
-		<a href="/auth/logout" class="variant-ghost-error btn mt-4 w-full">Logout</a>
+		<a href="/auth/logout" class="variant-ghost-error btn mt-4 w-full">
+			<LogoutIcon class="mr-2 size-5" />
+			Logout</a
+		>
 	</div>
 	<div class="bg-surface-100-800-token arrow"></div>
 </div>
@@ -201,7 +205,10 @@
 				{user.name}
 				<Avatar src={user.picture ?? undefined} width="w-10" rounded="rounded-full" />
 			</div>
-			<a href="/auth/logout" class="variant-ghost-error btn mt-4 w-full">Logout</a>
+			<a href="/auth/logout" class="variant-ghost-error btn mt-4 w-full">
+				<LogoutIcon class="mr-2 size-5" />
+				Logout</a
+			>
 		{:else}
 			{@render loginWithGoogle('w-full btn-md')}
 		{/if}
