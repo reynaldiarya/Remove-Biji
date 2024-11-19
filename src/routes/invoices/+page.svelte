@@ -53,21 +53,21 @@
 	<table class="table table-hover">
 		<thead>
 			<tr>
-				<th class="text-center">Paket</th>
-				<th class="text-center">Total Harga</th>
-				<th class="text-center">Status</th>
-				<th class="text-center">Tanggal Dibuat</th>
-				<th class="text-center">Tanggal Dibayar</th>
+				<th>Paket</th>
+				<th>Total Harga</th>
+				<th>Status</th>
+				<th>Tanggal Dibuat</th>
+				<th>Tanggal Dibayar</th>
 			</tr>
 		</thead>
 		<tbody>
 			{#each data.invoices as invoice (invoice.id)}
 				<tr>
 					<td class="flex items-center"
-						><img src="/favicon.ico" alt="biji" class="mx-2 size-4" /> {invoice.package} biji</td
+						><img src="/favicon.ico" alt="biji" class="mx-2 size-4" /> {invoice.package}</td
 					>
-					<td class="text-right">{formatRupiah(invoice.amount)}</td>
-					<td class="text-center">
+					<td>{formatRupiah(invoice.amount)}</td>
+					<td>
 						{#if invoice.status === 'PAID'}
 							<span class="variant-filled-success badge">{invoice.status}</span>
 						{:else if invoice.status === 'UNPAID'}
@@ -76,22 +76,24 @@
 							<span class="variant-filled-warning badge">{invoice.status}</span>
 						{/if}
 					</td>
-					<td class="text-right"
+					<td
 						>{!!invoice.createdAt &&
 							format(invoice.createdAt, 'dd MMM yyyy, HH:mm', { locale: id })}</td
 					>
 					<td>
 						{#if invoice.paidAt}
-							<span class="flex justify-end">
+							<span class="flex">
 								{format(invoice.paidAt, 'dd MMM yyyy, HH:mm', { locale: id })}
 							</span>
-						{:else}
-							<div class="flex justify-center">
-								<a href={invoice.checkoutUrl} class="variant-filled-surface btn btn-sm">
+						{:else if invoice.status === 'UNPAID'}
+							<div class="flex">
+								<a href={invoice.checkoutUrl} class="variant-filled-tertiary btn btn-sm">
 									<MoneyIcon class="mr-2 size-5" />
 									Bayar</a
 								>
 							</div>
+						{:else}
+							-
 						{/if}
 					</td>
 				</tr>

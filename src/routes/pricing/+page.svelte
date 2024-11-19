@@ -45,9 +45,9 @@
 	<table class="table table-hover mx-auto max-w-xl">
 		<thead>
 			<tr>
-				<th class="text-center">Jumlah biji*</th>
-				<th class="text-center">Harga**</th>
-				<th class="text-center">Harga per biji</th>
+				<th>Jumlah biji*</th>
+				<th>Harga**</th>
+				<th>Harga per biji</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -56,8 +56,8 @@
 					<td class="flex items-center font-medium"
 						><img src="/favicon.ico" alt="biji" class="mx-2 size-4" /> {row.value}
 					</td>
-					<td class="text-right">{formatRupiah(row.totalPrice)}</td>
-					<td class="text-right">{formatRupiah(row.pricePerImage)} / biji</td>
+					<td>{formatRupiah(row.totalPrice)}</td>
+					<td>{formatRupiah(row.pricePerImage)} / biji</td>
 				</tr>
 			{/each}
 		</tbody>
