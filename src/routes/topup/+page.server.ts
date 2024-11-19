@@ -52,7 +52,7 @@ export const actions = {
 		const expiry = Math.floor(Date.now() / 1000) + 24 * 60 * 60; //  24 jam
 
 		const payload = {
-			method: 'QRISC',
+			method: 'QRIS2',
 			merchant_ref,
 			amount: pkg?.totalPrice,
 			customer_name: locals.user?.name,
