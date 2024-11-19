@@ -84,5 +84,5 @@
 	<p class="flex items-center justify-center text-gray-600 dark:text-gray-400">
 		**Belum termasuk biaya admin
 	</p>
-	<p class="flex items-center justify-center text-gray-600 dark:text-gray-400">**Non-akumulatif</p>
+	<p class="flex items-center justify-center text-gray-600 dark:text-gray-400">***Non-akumulatif</p>
 </div>
