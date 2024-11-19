@@ -7,6 +7,7 @@
 	import toast from 'svelte-french-toast';
 	import type { PageData } from './$types';
 	import { superForm } from 'sveltekit-superforms';
+	import { setupViewTransition } from 'sveltekit-view-transition';
 
 	type Props = {
 		data: PageData;
@@ -23,6 +24,8 @@
 
 	const title = 'Top Up - Remove Biji';
 	const description = 'Top Up Remove Biji';
+
+	const { transition } = setupViewTransition();
 </script>
 
 <svelte:head>
@@ -48,7 +51,7 @@
 	}}
 />
 
-<div class="space-y-2 text-center">
+<div class="space-y-2 text-center" use:transition={'heading'}>
 	<h1 class="h1 font-bold">Top Up</h1>
 	<h2 class="h5 text-gray-600 dark:text-gray-400">Isi ulang bijimu</h2>
 </div>
@@ -85,12 +88,12 @@
 
 	<div class="mt-6 space-y-5 text-center">
 		<p class="flex items-center justify-center text-gray-600 dark:text-gray-400">
-			*1 <img src="/favicon.ico" alt="biji" class="mx-2 size-4" /> = 1 gambar
+			1 <img src="/favicon.ico" alt="biji" class="mx-2 size-4" /> = 1 gambar
 		</p>
 
 		<button type="submit" class="variant-filled btn" disabled={$delayed || !$form.package}>
 			<BuyIcon class="mr-2 size-5" />
-			Beli sekarang
+			Beli sekarang (QRIS)
 		</button>
 	</div>
 </form>
