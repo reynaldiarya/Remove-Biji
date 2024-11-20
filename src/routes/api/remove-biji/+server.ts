@@ -60,14 +60,18 @@ export const POST: RequestHandler = async (event) => {
 
 	let creditsAmount = undefined;
 	if (locals.user && locals.user.creditsAmount && locals.user.creditsAmount > 0) {
-		const row = await db
+		const [row] = await db
 			.update(table.credits)
 			.set({
 				amount: sql`${table.credits.amount} - ${files.length}`
 			})
 			.where(eq(table.credits.id, locals.user.id))
 			.returning({ amount: table.credits.amount });
-		creditsAmount = row.at(0)?.amount;
+		if (!row) {
+			throw new Error('Error updating credits');
+		}
+
+		creditsAmount = row.amount;
 	}
 
 	return new Response(JSON.stringify({ images: output, creditsAmount }), {

@@ -6,6 +6,7 @@ import { db } from '$lib/server/db';
 import * as table from '$lib/server/db/schema';
 import type { TripayCallbackResponse } from '$lib/types/tripay';
 import { eq, sql } from 'drizzle-orm';
+import { withCatch } from '@tfkhdyt/with-catch';
 
 export const POST: RequestHandler = async ({ request }) => {
 	const data: TripayCallbackResponse = await request.json();
@@ -30,12 +31,17 @@ export const POST: RequestHandler = async ({ request }) => {
 			.returning({ package: table.invoices.package, userId: table.invoices.userId });
 
 		if (data.status === 'PAID') {
-			await trx
-				.update(table.credits)
-				.set({
-					amount: sql`${table.credits.amount} + ${invoice.package}`
-				})
-				.where(eq(table.credits.id, invoice.userId));
+			const [err] = await withCatch(
+				trx
+					.update(table.credits)
+					.set({
+						amount: sql`${table.credits.amount} + ${invoice.package}`
+					})
+					.where(eq(table.credits.id, invoice.userId))
+			);
+			if (err) {
+				throw new Error('Error updating credits', { cause: err });
+			}
 		}
 	});
 

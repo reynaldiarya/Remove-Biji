@@ -10,6 +10,7 @@ import { createPaymentSchema } from '$lib/schema/payment-schema';
 import type { TripayInvoiceResponse } from '$lib/types/tripay';
 import { db } from '$lib/server/db';
 import * as table from '$lib/server/db/schema';
+import { withCatch } from '@tfkhdyt/with-catch';
 
 export const load: PageServerLoad = async ({ parent }) => {
 	const data = await parent();
@@ -74,31 +75,41 @@ export const actions = {
 			signature
 		};
 
-		const response = await fetch(tripayUrl, {
-			method: 'POST',
-			body: JSON.stringify(payload),
-			headers: {
-				'Content-Type': 'application/json',
-				Authorization: 'Bearer ' + apiKey
-			}
-		});
-		const data = await response.json();
+		const [err, response] = await withCatch(
+			fetch(tripayUrl, {
+				method: 'POST',
+				body: JSON.stringify(payload),
+				headers: {
+					'Content-Type': 'application/json',
+					Authorization: 'Bearer ' + apiKey
+				}
+			})
+		);
+		if (err) {
+			throw new Error('Error creating payment', { cause: err });
+		}
 
+		const data = await response.json();
 		if (!response.ok) {
 			return message(form, { type: 'error', message: data.message });
 		}
 
 		const invoice: TripayInvoiceResponse = data.data;
 
-		await db.insert(table.invoices).values({
-			id: invoice.merchant_ref,
-			userId: locals.user?.id,
-			status: invoice.status,
-			expiredTime: new Date(invoice.expired_time * 1000),
-			package: form.data.package,
-			amount: invoice.amount,
-			checkoutUrl: invoice.checkout_url
-		});
+		const [errInsert] = await withCatch(
+			db.insert(table.invoices).values({
+				id: invoice.merchant_ref,
+				userId: locals.user?.id,
+				status: invoice.status,
+				expiredTime: new Date(invoice.expired_time * 1000),
+				package: form.data.package,
+				amount: invoice.amount,
+				checkoutUrl: invoice.checkout_url
+			})
+		);
+		if (errInsert) {
+			throw new Error('Error creating invoice', { cause: errInsert });
+		}
 
 		return redirect(302, invoice.checkout_url);
 	}

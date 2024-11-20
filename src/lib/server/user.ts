@@ -1,9 +1,10 @@
+import { withCatch } from '@tfkhdyt/with-catch';
 import { eq } from 'drizzle-orm';
 import { db } from './db';
 import * as table from './db/schema';
 
 export async function createUser(googleId: string, email: string, name: string, picture: string) {
-	const row = await db
+	const [user] = await db
 		.insert(table.user)
 		.values({
 			googleId,
@@ -12,21 +13,20 @@ export async function createUser(googleId: string, email: string, name: string, 
 			picture
 		})
 		.returning();
-
-	const user = row.at(0);
 	if (!user) {
 		throw new Error('Failed to create user');
 	}
 
-	await db.insert(table.credits).values({ id: user.id, amount: 5 });
+	const [err] = await withCatch(db.insert(table.credits).values({ id: user.id, amount: 5 }));
+	if (err) {
+		throw new Error('Failed to create credits', { cause: err });
+	}
 
 	return user;
 }
 
 export async function getUserFromGoogleId(googleId: string) {
-	const row = await db.select().from(table.user).where(eq(table.user.googleId, googleId));
-	const user = row.at(0);
-
+	const [user] = await db.select().from(table.user).where(eq(table.user.googleId, googleId));
 	if (!user) {
 		return null;
 	}
