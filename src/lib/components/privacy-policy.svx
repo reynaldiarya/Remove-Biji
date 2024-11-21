@@ -5,7 +5,7 @@
 
 # Privacy Policy for Remove Biji
 
-_Last Updated: November 18, 2024_
+_Last Updated: November 21, 2024_
 
 ## Introduction
 
@@ -55,9 +55,9 @@ We want to be transparent about how we handle your images:
 
 For payment processing:
 
-- We use secure third-party payment gateways
+- We use secure third-party payment gateway
 - We DO NOT collect or store any payment information
-- All payment transactions are encrypted and processed through our payment gateway partners
+- All payment transactions are encrypted and processed through our payment gateway partner
 - Please refer to the payment gateway's privacy policy for information about how they handle your payment data
 
 ## Data Sharing and Disclosure
@@ -73,9 +73,7 @@ We do not sell, trade, or rent your personal information to third parties. We ma
 
 We implement appropriate technical and organizational security measures to protect your personal information, including:
 
-- Encryption of data in transit
 - Secure server infrastructure
-- Regular security assessments
 - Access controls and authentication measures
 
 ## Your Rights
@@ -98,7 +96,6 @@ We may update this privacy policy from time to time. We will notify you of any c
 
 - Posting the new privacy policy on our website
 - Updating the "Last Updated" date at the top of this policy
-- Sending you an email notification for significant changes
 
 ## Contact Us
 
