@@ -8,6 +8,7 @@
 	import type { PageData } from './$types';
 	import { superForm } from 'sveltekit-superforms';
 	import { setupViewTransition } from 'sveltekit-view-transition';
+	import BijiIcon from '$lib/icons/biji-icon.svelte';
 
 	type Props = {
 		data: PageData;
@@ -75,8 +76,8 @@
 						required={i === 0}
 					/>
 					<span class="flex w-[75svw] items-center justify-between md:w-[250px]">
-						<span class="flex items-center">
-							<img src="/favicon.ico" alt="biji" class="mr-2 size-4" />
+						<span class="-ml-2 flex items-center">
+							<BijiIcon />
 							{row.value}
 						</span>
 						<span>{formatRupiah(row.totalPrice)}</span>
@@ -88,7 +89,8 @@
 
 	<div class="mt-6 space-y-5 text-center">
 		<p class="flex items-center justify-center text-gray-600 dark:text-gray-400">
-			1 <img src="/favicon.ico" alt="biji" class="mx-2 size-4" /> = 1 gambar
+			1 <BijiIcon />
+			= 1 gambar
 		</p>
 
 		<button

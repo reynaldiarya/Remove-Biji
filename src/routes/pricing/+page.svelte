@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { packages } from '$lib/constants/price';
+	import BijiIcon from '$lib/icons/biji-icon.svelte';
 	// import BuyIcon from '$lib/icons/buy-icon.svelte';
 	import { formatRupiah } from '$lib/utils';
 	import SvelteSeo from 'svelte-seo';
@@ -52,16 +53,18 @@
 		</thead>
 		<tbody>
 			<tr>
-				<td class="flex items-center font-medium"
-					><img src="/favicon.ico" alt="biji" class="mx-2 size-4" /> 3 / hari***
+				<td class="flex items-center font-medium">
+					<BijiIcon />
+					3 / hari***
 				</td>
 				<td>Gratis</td>
 				<td>Gratis</td>
 			</tr>
 			{#each packages as row}
 				<tr>
-					<td class="flex items-center font-medium"
-						><img src="/favicon.ico" alt="biji" class="mx-2 size-4" /> {row.value}
+					<td class="flex items-center font-medium">
+						<BijiIcon />
+						{row.value}
 					</td>
 					<td>{formatRupiah(row.totalPrice)}</td>
 					<td>{formatRupiah(row.pricePerImage)} / biji</td>
@@ -79,7 +82,8 @@
 
 <div class="mt-6 text-center">
 	<p class="flex items-center justify-center text-gray-600 dark:text-gray-400">
-		*1 <img src="/favicon.ico" alt="biji" class="mx-2 size-4" /> = 1 gambar
+		*1 <BijiIcon />
+		= 1 gambar
 	</p>
 	<p class="flex items-center justify-center text-gray-600 dark:text-gray-400">
 		**Belum termasuk biaya admin

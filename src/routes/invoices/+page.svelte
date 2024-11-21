@@ -6,6 +6,7 @@
 	import { format } from 'date-fns';
 	import { id } from 'date-fns/locale/id';
 	import MoneyIcon from '$lib/icons/money-icon.svelte';
+	import BijiIcon from '$lib/icons/biji-icon.svelte';
 
 	type Props = {
 		data: PageData;
@@ -63,8 +64,9 @@
 		<tbody>
 			{#each data.invoices as invoice (invoice.id)}
 				<tr>
-					<td class="flex items-center"
-						><img src="/favicon.ico" alt="biji" class="mx-2 size-4" /> {invoice.package}</td
+					<td class="flex items-center">
+						<BijiIcon />
+						{invoice.package}</td
 					>
 					<td>{formatRupiah(invoice.amount)}</td>
 					<td>
