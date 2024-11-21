@@ -1,12 +1,12 @@
 <script lang="ts">
 	import SvelteSeo from 'svelte-seo';
-	import { setupViewTransition } from 'sveltekit-view-transition';
 	import type { PageData } from './$types';
 	import { formatRupiah } from '$lib/utils';
 	import { format } from 'date-fns';
 	import { id } from 'date-fns/locale/id';
 	import MoneyIcon from '$lib/icons/money-icon.svelte';
 	import BijiIcon from '$lib/icons/biji-icon.svelte';
+	import Heading from '$lib/components/heading.svelte';
 
 	type Props = {
 		data: PageData;
@@ -16,8 +16,6 @@
 
 	const title = 'Invoice - Remove Biji';
 	const description = 'Invoice Remove Biji';
-
-	const { transition } = setupViewTransition();
 </script>
 
 <svelte:head>
@@ -43,10 +41,7 @@
 	}}
 />
 
-<div class="space-y-2 text-center" use:transition={'heading'}>
-	<h1 class="h1 font-bold">Invoice</h1>
-	<h2 class="h5 text-gray-600 dark:text-gray-400">Riwayat pembelianmu</h2>
-</div>
+<Heading title="Invoice" subtitle="Riwayat pembelianmu" />
 
 <!-- Responsive Container (recommended) -->
 <div class="table-container mx-auto mt-10 max-w-2xl">

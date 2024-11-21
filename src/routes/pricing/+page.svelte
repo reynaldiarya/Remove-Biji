@@ -1,15 +1,12 @@
 <script lang="ts">
+	import Heading from '$lib/components/heading.svelte';
 	import { packages } from '$lib/constants/price';
 	import BijiIcon from '$lib/icons/biji-icon.svelte';
-	// import BuyIcon from '$lib/icons/buy-icon.svelte';
 	import { formatRupiah } from '$lib/utils';
 	import SvelteSeo from 'svelte-seo';
-	import { setupViewTransition } from 'sveltekit-view-transition';
 
 	const title = 'Daftar Harga - Remove Biji';
 	const description = 'Daftar Harga Remove Biji';
-
-	const { transition } = setupViewTransition();
 </script>
 
 <svelte:head>
@@ -35,10 +32,7 @@
 	}}
 />
 
-<div class="space-y-2 text-center" use:transition={'heading'}>
-	<h1 class="h1 font-bold">Daftar Harga</h1>
-	<h2 class="h5 text-gray-600 dark:text-gray-400">91% lebih murah dibanding remove.bg</h2>
-</div>
+<Heading title="Daftar Harga" subtitle="91% lebih murah dibanding remove.bg" />
 
 <!-- Responsive Container (recommended) -->
 <div class="table-container mt-10">

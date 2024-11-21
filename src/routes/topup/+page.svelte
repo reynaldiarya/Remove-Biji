@@ -1,14 +1,14 @@
 <script lang="ts">
+	import Heading from '$lib/components/heading.svelte';
+	import { packages } from '$lib/constants/price';
+	import BijiIcon from '$lib/icons/biji-icon.svelte';
 	import BuyIcon from '$lib/icons/buy-icon.svelte';
 	import { formatRupiah } from '$lib/utils';
-	import SvelteSeo from 'svelte-seo';
-	import { packages } from '$lib/constants/price';
 	import clsx from 'clsx';
 	import toast from 'svelte-french-toast';
-	import type { PageData } from './$types';
+	import SvelteSeo from 'svelte-seo';
 	import { superForm } from 'sveltekit-superforms';
-	import { setupViewTransition } from 'sveltekit-view-transition';
-	import BijiIcon from '$lib/icons/biji-icon.svelte';
+	import type { PageData } from './$types';
 
 	type Props = {
 		data: PageData;
@@ -25,8 +25,6 @@
 
 	const title = 'Top Up - Remove Biji';
 	const description = 'Top Up Remove Biji';
-
-	const { transition } = setupViewTransition();
 </script>
 
 <svelte:head>
@@ -52,10 +50,7 @@
 	}}
 />
 
-<div class="space-y-2 text-center" use:transition={'heading'}>
-	<h1 class="h1 font-bold">Top Up</h1>
-	<h2 class="h5 text-gray-600 dark:text-gray-400">Isi ulang bijimu</h2>
-</div>
+<Heading title="Top Up" subtitle="Isi ulang bijimu" />
 
 <form method="POST" use:enhance>
 	<div class="mt-10 flex justify-center">
