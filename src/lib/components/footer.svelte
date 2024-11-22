@@ -44,7 +44,7 @@
 </script>
 
 <footer
-	class="flex flex-wrap items-center justify-center gap-4 py-4 text-gray-600 md:justify-between dark:text-gray-400"
+	class="flex flex-wrap items-center justify-center gap-y-2 py-4 text-gray-600 md:justify-between dark:text-gray-400"
 	use:transition={'footer'}
 >
 	<div class="flex flex-wrap items-center justify-center gap-x-2 text-sm md:text-base">
