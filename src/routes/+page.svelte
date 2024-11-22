@@ -65,11 +65,14 @@
 <div class="min-h-screen">
 	<header class="container mx-auto px-4 py-16">
 		<div class="text-center">
-			<h1 class="mb-4 text-4xl font-bold text-gray-900 md:text-5xl" use:transition={'heading'}>
+			<h1
+				class="mb-4 text-4xl font-bold text-gray-900 md:text-5xl dark:text-gray-50"
+				use:transition={'heading'}
+			>
 				Hapus Background Gambar
 				<span class="text-purple-600"> dalam Sekejap</span>
 			</h1>
-			<p class="mb-12 text-lg text-gray-600" use:transition={'subtitle'}>
+			<p class="mb-12 text-lg text-gray-600 dark:text-gray-400" use:transition={'subtitle'}>
 				Solusi AI yang powerful untuk menghapus background foto Anda secara otomatis dalam hitungan
 				detik
 			</p>
@@ -85,11 +88,13 @@
 	<section class="container mx-auto px-4 py-16">
 		<div class="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
 			{#each features as feature}
-				<div class="rounded-xl bg-slate-100 p-6 shadow-lg transition hover:bg-slate-200">
+				<div
+					class="rounded-xl bg-slate-100 p-6 shadow-lg transition duration-300 hover:bg-slate-200 dark:bg-slate-800 hover:dark:bg-slate-700"
+				>
 					<iconify-icon icon={feature.icon} width="3rem" class="mb-2 text-purple-600"
 					></iconify-icon>
 					<h3 class="mb-2 text-xl font-semibold">{feature.title}</h3>
-					<p class="text-gray-600">{feature.description}</p>
+					<p class="text-gray-600 dark:text-gray-400">{feature.description}</p>
 				</div>
 			{/each}
 		</div>
@@ -101,15 +106,15 @@
 			<div class="grid gap-8 md:grid-cols-3">
 				{#each caraKerja as cara, i}
 					<div
-						class="rounded-xl bg-slate-100 px-2 py-8 text-center shadow-lg transition hover:bg-slate-200"
+						class="rounded-xl bg-slate-100 px-2 py-8 text-center shadow-lg transition duration-300 hover:bg-slate-200 dark:bg-slate-800 hover:dark:bg-slate-700"
 					>
 						<div
-							class="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-purple-100"
+							class="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-purple-100 dark:bg-purple-300"
 						>
 							<iconify-icon icon={cara.icon} width="2rem" class="text-purple-600"></iconify-icon>
 						</div>
 						<h3 class="mb-2 font-semibold">{i + 1}. {cara.title}</h3>
-						<p class="text-gray-600">{cara.description}</p>
+						<p class="text-gray-600 dark:text-gray-400">{cara.description}</p>
 					</div>
 				{/each}
 			</div>
@@ -126,7 +131,9 @@
 							<span class="font-medium">{f.question}</span>
 						</svelte:fragment>
 						<svelte:fragment slot="content">
-							{f.answer}
+							<span class="text-gray-600 dark:text-gray-400">
+								{f.answer}
+							</span>
 						</svelte:fragment>
 					</AccordionItem>
 				{/each}
@@ -136,7 +143,9 @@
 
 	<section class="container mx-auto px-4 py-16 text-center">
 		<h2 class="mb-4 text-3xl font-bold">Siap Mencoba?</h2>
-		<p class="mb-8 text-lg text-gray-600">Dapatkan 5 saldo gratis untuk member baru</p>
+		<p class="mb-8 text-lg text-gray-600 dark:text-gray-400">
+			Dapatkan 5 saldo gratis untuk member baru
+		</p>
 		<a
 			href="/app"
 			class="rounded-full bg-purple-600 px-8 py-4 text-base font-semibold text-white transition hover:bg-purple-700"
