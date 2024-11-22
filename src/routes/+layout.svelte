@@ -10,6 +10,7 @@
 	import '@fontsource/roboto/700.css';
 	import '@fontsource/roboto/900.css';
 	import { storePopup } from '@skeletonlabs/skeleton';
+	import 'iconify-icon';
 	import type { Snippet } from 'svelte';
 	import { Toaster } from 'svelte-french-toast';
 	import SvelteSeo from 'svelte-seo';
