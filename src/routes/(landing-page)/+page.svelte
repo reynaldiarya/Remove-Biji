@@ -19,7 +19,7 @@
 			description: 'Interface sederhana, upload dan download dengan mudah'
 		},
 		{
-			icon: 'fluent:money-16-regular',
+			icon: 'lucide:badge-percent',
 			title: 'Harga terjangkau',
 			description: '91% lebih murah dibanding remove.bg'
 		}
@@ -32,12 +32,12 @@
 			description: 'Drag & drop atau pilih gambar Anda'
 		},
 		{
-			icon: 'material-symbols:upload',
+			icon: 'uis:process',
 			title: 'Proses Otomatis',
 			description: 'AI kami akan memproses gambar Anda'
 		},
 		{
-			icon: 'material-symbols:upload',
+			icon: 'material-symbols:download',
 			title: 'Download Hasil',
 			description: 'Unduh gambar tanpa background'
 		}
@@ -49,9 +49,13 @@
 			answer: 'Background -> (Disingkat jadi) BG -> (Dibaca) Bi-ji -> Biji'
 		},
 		{
-			question: 'Apa perbedaan dengan remove.bg? dan kenapa saya harus menggunakan aplikasi ini?',
+			question: 'Apa perbedaan dengan remove.bg?',
 			answer:
-				'Free tier remove.bg menghasilkan output yang berkualitas rendah. Sementara itu, free tier remove biji mampu menghasilkan kualitas gambar yang setara dengan gambar asli. Selain itu, biaya saldo remove biji 91% lebih terjangkau dibandingkan dengan remove.bg.'
+				'Free tier remove.bg menghasilkan output yang berkualitas rendah. Sementara itu, free tier remove biji menghasilkan kualitas gambar yang setara dengan gambar asli.'
+		},
+		{
+			question: 'Kenapa saya harus menggunakan aplikasi ini?',
+			answer: 'Harga saldo remove biji 91% lebih terjangkau dibanding remove.bg.'
 		}
 	];
 
@@ -62,36 +66,31 @@
 	<title>Remove Biji - Hilangkan bijimu dengan mudah</title>
 </svelte:head>
 
-<div class="min-h-screen">
-	<header class="container mx-auto px-4 py-16">
+<div class="relative min-h-screen">
+	<header class="mx-auto px-4 py-16 lg:container md:px-6 lg:px-8">
 		<div class="text-center">
 			<h1
 				class="mb-4 text-4xl font-bold text-gray-900 md:text-5xl dark:text-gray-50"
 				use:transition={'heading'}
 			>
 				Hapus Background Gambar
-				<span class="text-purple-600"> dalam Sekejap</span>
+				<span class="text-emerald-500"> dalam Sekejap</span>
 			</h1>
 			<p class="mb-12 text-lg text-gray-600 dark:text-gray-400" use:transition={'subtitle'}>
 				Solusi AI yang powerful untuk menghapus background foto Anda secara otomatis dalam hitungan
 				detik
 			</p>
-			<a
-				href="/app"
-				class="rounded-full bg-purple-600 px-8 py-4 text-base font-semibold text-white transition hover:bg-purple-700"
-			>
-				Mulai Gratis
-			</a>
+			<a href="/app" class="variant-filled-primary btn btn-lg font-medium"> Coba Gratis </a>
 		</div>
 	</header>
 
-	<section class="container mx-auto px-4 py-16">
+	<section class="mx-auto px-4 pb-32 pt-16 lg:container md:px-6 lg:px-8">
 		<div class="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
 			{#each features as feature}
 				<div
-					class="rounded-xl bg-slate-100 p-6 shadow-lg transition duration-300 hover:bg-slate-200 dark:bg-slate-800 hover:dark:bg-slate-700"
+					class="rounded-xl bg-surface-100 p-10 shadow-lg transition duration-300 hover:bg-surface-200 dark:bg-surface-800 hover:dark:bg-surface-700"
 				>
-					<iconify-icon icon={feature.icon} width="3rem" class="mb-2 text-purple-600"
+					<iconify-icon icon={feature.icon} width="3rem" class="mb-2 text-emerald-500"
 					></iconify-icon>
 					<h3 class="mb-2 text-xl font-semibold">{feature.title}</h3>
 					<p class="text-gray-600 dark:text-gray-400">{feature.description}</p>
@@ -100,18 +99,22 @@
 		</div>
 	</section>
 
-	<section class="py-16">
-		<div class="container mx-auto px-4">
+	<section class="mx-auto pb-32 lg:container">
+		<div class="mx-auto px-4 lg:container md:px-6 lg:px-8">
 			<h2 class="mb-12 text-center text-3xl font-bold">Cara Kerja</h2>
 			<div class="grid gap-8 md:grid-cols-3">
 				{#each caraKerja as cara, i}
 					<div
-						class="rounded-xl bg-slate-100 px-2 py-8 text-center shadow-lg transition duration-300 hover:bg-slate-200 dark:bg-slate-800 hover:dark:bg-slate-700"
+						class="rounded-xl bg-surface-100 px-2 py-8 text-center shadow-lg transition duration-300 hover:bg-surface-200 dark:bg-surface-800 hover:dark:bg-surface-700"
 					>
 						<div
-							class="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-purple-100 dark:bg-purple-300"
+							class="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-emerald-500"
 						>
-							<iconify-icon icon={cara.icon} width="2rem" class="text-purple-600"></iconify-icon>
+							<iconify-icon
+								icon={cara.icon}
+								width="2rem"
+								class="text-emerald-100 dark:text-emerald-800"
+							></iconify-icon>
 						</div>
 						<h3 class="mb-2 font-semibold">{i + 1}. {cara.title}</h3>
 						<p class="text-gray-600 dark:text-gray-400">{cara.description}</p>
@@ -121,8 +124,8 @@
 		</div>
 	</section>
 
-	<section class="py-16">
-		<div class="container mx-auto px-4">
+	<section class="pb-32">
+		<div class="mx-auto px-4 lg:container md:px-6 lg:px-8">
 			<h2 class="mb-12 text-center text-3xl font-bold">Frequently Asked Questions</h2>
 			<Accordion class="mx-auto max-w-2xl space-y-4">
 				{#each faq as f}
@@ -141,16 +144,11 @@
 		</div>
 	</section>
 
-	<section class="container mx-auto px-4 py-16 text-center">
+	<section class="bg-surface-100 px-4 py-32 text-center dark:bg-surface-800">
 		<h2 class="mb-4 text-3xl font-bold">Siap Mencoba?</h2>
 		<p class="mb-8 text-lg text-gray-600 dark:text-gray-400">
 			Dapatkan 5 saldo gratis untuk member baru
 		</p>
-		<a
-			href="/app"
-			class="rounded-full bg-purple-600 px-8 py-4 text-base font-semibold text-white transition hover:bg-purple-700"
-		>
-			Mulai Sekarang
-		</a>
+		<a href="/app" class="variant-filled-primary btn btn-lg font-medium"> Coba Sekarang </a>
 	</section>
 </div>

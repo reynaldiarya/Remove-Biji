@@ -11,5 +11,5 @@ export const GET: RequestHandler = async (event) => {
 	await invalidateSession(locals.session.id);
 	deleteSessionTokenCookie(event);
 
-	return redirect(302, '/');
+	return redirect(301, '/');
 };

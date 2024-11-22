@@ -1,7 +1,5 @@
 <script lang="ts">
 	import { env } from '$env/dynamic/public';
-	import Footer from '$lib/components/footer.svelte';
-	import Header from '$lib/components/header.svelte';
 	import { arrow, autoUpdate, computePosition, flip, offset, shift } from '@floating-ui/dom';
 	import '@fontsource/roboto/100.css';
 	import '@fontsource/roboto/300.css';
@@ -16,14 +14,12 @@
 	import SvelteSeo from 'svelte-seo';
 	import { setupViewTransition } from 'sveltekit-view-transition';
 	import '../app.css';
-	import type { LayoutData } from './$types';
 
 	type Props = {
-		data: LayoutData;
 		children: Snippet<[]>;
 	};
 
-	let { children, data }: Props = $props();
+	let { children }: Props = $props();
 
 	const title = 'Remove Biji - Hilangkan bijimu dengan mudah';
 	const description =
@@ -61,14 +57,6 @@
 	}}
 />
 
-<main class="mx-auto flex min-h-screen flex-col px-4 lg:container md:px-6 lg:px-8">
-	<div class="flex-grow py-8">
-		<Header user={data.user} />
-		<div class="py-8">
-			{@render children()}
-		</div>
-	</div>
-	<Footer />
-</main>
+{@render children()}
 
 <Toaster position="bottom-right" />

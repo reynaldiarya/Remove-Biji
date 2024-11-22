@@ -12,7 +12,7 @@
 <a
 	href="/auth/login/google"
 	class={clsx(
-		'plausible-event-name=Login btn btn-sm bg-purple-600 font-medium text-white',
+		'plausible-event-name=Login variant-filled-primary btn btn-sm font-medium ',
 		className
 	)}
 >
