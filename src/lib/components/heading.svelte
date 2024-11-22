@@ -11,9 +11,9 @@
 	const { transition } = setupViewTransition();
 </script>
 
-<div class="space-y-2 text-center" use:transition={'heading'}>
-	<h1 class="h1 font-bold">{title}</h1>
+<div class="space-y-2 text-center">
+	<h1 class="h1 font-bold" use:transition={'heading'}>{title}</h1>
 	{#if subtitle}
-		<h2 class="h5 text-gray-600 dark:text-gray-400">{subtitle}</h2>
+		<h2 class="h5 text-gray-600 dark:text-gray-400" use:transition={'subtitle'}>{subtitle}</h2>
 	{/if}
 </div>
