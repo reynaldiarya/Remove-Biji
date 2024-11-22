@@ -11,7 +11,10 @@
 
 <a
 	href="/auth/login/google"
-	class={clsx('plausible-event-name=Login variant-filled-tertiary btn btn-sm', className)}
+	class={clsx(
+		'plausible-event-name=Login btn btn-sm bg-purple-600 font-medium text-white',
+		className
+	)}
 >
 	<GoogleIcon class="mr-2 size-5" />
 	Login dengan Google
