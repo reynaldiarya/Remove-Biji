@@ -5,8 +5,8 @@
 	import { formatRupiah } from '$lib/utils';
 	import SvelteSeo from 'svelte-seo';
 
-	const title = 'Daftar Harga - Remove Biji';
-	const description = 'Daftar Harga Remove Biji';
+	const title = 'Pricing - Remove Biji';
+	const description = 'Pricing Remove Biji';
 </script>
 
 <svelte:head>
@@ -32,7 +32,7 @@
 	}}
 />
 
-<Heading title="Daftar Harga" subtitle="91% lebih murah dibanding remove.bg" />
+<Heading title="Pricing" subtitle="91% lebih murah dibanding remove.bg" />
 
 <!-- Responsive Container (recommended) -->
 <div class="table-container mt-10">

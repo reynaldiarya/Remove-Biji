@@ -75,7 +75,7 @@
 				href="/invoices"
 				class="flex items-center justify-between rounded px-4 py-2 hover:bg-surface-300 dark:hover:bg-surface-800"
 			>
-				<span>Invoice</span>
+				<span>Purchases</span>
 				<InvoiceIcon class="size-5" />
 			</a>
 		{/if}
@@ -83,7 +83,7 @@
 			href="/pricing"
 			class="flex items-center justify-between rounded px-4 py-2 hover:bg-surface-300 dark:hover:bg-surface-800"
 		>
-			<span>Daftar Harga</span>
+			<span>Pricing</span>
 			<BillIcon class="size-5" />
 		</a>
 		<div class="flex items-center justify-between rounded px-4 py-2">

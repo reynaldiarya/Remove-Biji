@@ -86,12 +86,12 @@
 			>
 			<a href="/invoices" class="flex items-center hover:text-gray-600 dark:hover:text-gray-300">
 				<InvoiceIcon class="mr-2 size-5" />
-				Invoice</a
+				Purchases</a
 			>
 		{/if}
 		<a href="/pricing" class="flex items-center hover:text-gray-600 dark:hover:text-gray-300">
 			<BillIcon class="mr-2 size-5" />
-			Daftar Harga</a
+			Pricing</a
 		>
 		{#if user}
 			<div use:popup={profilePopup}>

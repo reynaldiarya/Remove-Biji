@@ -41,7 +41,7 @@
 	}}
 />
 
-<Heading title="Invoice" subtitle="Riwayat pembelianmu" />
+<Heading title="Purchases" subtitle="Riwayat pembelianmu" />
 
 <!-- Responsive Container (recommended) -->
 <div class="table-container mx-auto mt-10 max-w-2xl">
