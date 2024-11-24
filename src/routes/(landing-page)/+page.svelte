@@ -88,7 +88,7 @@
 	</header>
 
 	<section
-		class="mx-auto flex flex-wrap items-start gap-8 px-4 pb-32 pt-16 lg:container md:px-6 lg:px-8"
+		class="mx-auto flex flex-wrap items-start gap-8 px-4 pb-32 pt-16 lg:container md:px-6 lg:flex-nowrap lg:px-8"
 	>
 		<div class="rounded lg:w-1/2">
 			<CompareImage
