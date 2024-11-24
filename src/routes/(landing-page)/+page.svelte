@@ -93,9 +93,9 @@
 	>
 		<div class="rounded lg:w-1/2">
 			<CompareImage
-				imageLeftSrc="/before.jpg"
+				imageLeftSrc="/before.webp"
 				imageLeftAlt="left"
-				imageRightSrc="/after.png"
+				imageRightSrc="/after.webp"
 				imageRightAlt="right"
 				--handle-size="2.5rem"
 				--handle-background-color="rgba(0, 0, 0, 0.6)"
