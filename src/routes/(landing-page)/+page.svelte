@@ -88,7 +88,7 @@
 	</header>
 
 	<section
-		class="mx-auto flex flex-wrap items-start gap-8 px-4 pb-32 pt-16 lg:container md:px-6 lg:flex-nowrap lg:px-8"
+		class="mx-auto flex flex-wrap gap-8 px-4 pb-32 pt-16 lg:container md:px-6 lg:flex-nowrap lg:px-8"
 	>
 		<div class="rounded lg:w-1/2">
 			<CompareImage
@@ -102,22 +102,15 @@
 				--handle-border-width="0.125rem"
 				--slider-color="#ffffff"
 				--slider-width="0.125rem"
-			>
-				<svelte:fragment slot="slider-label">
-					Set the visibility of one image over the other. 0 is full visibility of the second image
-					and 100 is full visibility of the first image. Any amount in-between is a left/right
-					cutoff at the percentage of the slider.
-				</svelte:fragment>
-			</CompareImage>
+			/>
 		</div>
-		<div class="grid gap-8 md:grid-cols-2 lg:w-1/2">
+		<div class="grid place-content-around gap-8 md:grid-cols-2 lg:w-1/2">
 			{#each features as feature}
 				<div
-					class="rounded-xl bg-surface-100 p-10 shadow-lg transition duration-300 hover:bg-surface-200 dark:bg-surface-800 hover:dark:bg-surface-700"
+					class="space-y-2 rounded-xl bg-surface-100 p-10 shadow-lg transition duration-300 hover:bg-surface-200 dark:bg-surface-800 hover:dark:bg-surface-700"
 				>
-					<iconify-icon icon={feature.icon} width="3rem" class="mb-2 text-emerald-500"
-					></iconify-icon>
-					<h3 class="mb-2 text-xl font-semibold">{feature.title}</h3>
+					<iconify-icon icon={feature.icon} width="3rem" class="text-emerald-500"></iconify-icon>
+					<h3 class="text-xl font-semibold">{feature.title}</h3>
 					<p class="text-gray-600 dark:text-gray-400">{feature.description}</p>
 				</div>
 			{/each}

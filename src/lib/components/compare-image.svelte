@@ -1,24 +1,9 @@
 <script lang="ts">
-	/**
-	 * src attribute of the left HTMLImageElement
-	 */
-	export let imageLeftSrc = '';
-	/**
-	 * alt text for the left image
-	 */
-	export let imageLeftAlt = '';
-	/**
-	 * src attribute of the right HTMLImageElement
-	 */
-	export let imageRightSrc = '';
-	/**
-	 * alt text for the left image
-	 */
-	export let imageRightAlt = '';
+	let { imageLeftSrc = '', imageLeftAlt = '', imageRightSrc = '', imageRightAlt = '' } = $props();
 
 	// make sure this matches the default value attribute in the markup
-	let sliderPosition: number = 50;
-	let animationFrame: number | null = null;
+	let sliderPosition = $state(50);
+	let animationFrame: number | null = $state(null);
 
 	function handleInput(e: Event) {
 		if (animationFrame) cancelAnimationFrame(animationFrame);
@@ -43,20 +28,18 @@
 
 	<label>
 		<span class="visually-hidden">
-			<slot name="slider-label">
-				Set the visibility of one image over the other. 0 is full visibility of the second image and
-				100 is full visibility of the first image. Any amount in-between is a left/right cutoff at
-				the percentage of the slider.
-			</slot>
+			Set the visibility of one image over the other. 0 is full visibility of the second image and
+			100 is full visibility of the first image. Any amount in-between is a left/right cutoff at the
+			percentage of the slider.
 		</span>
 		<input
 			type="range"
 			min="0"
 			max="100"
 			value={sliderPosition}
-			on:input={handleInput}
-			on:change={handleInput}
-			on:click={handleClick}
+			oninput={handleInput}
+			onchange={handleInput}
+			onclick={handleClick}
 		/>
 	</label>
 </div>
