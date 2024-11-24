@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { setupViewTransition } from 'sveltekit-view-transition';
 	import { Accordion, AccordionItem } from '@skeletonlabs/skeleton';
+	import CompareImage from '$lib/components/compare-image.svelte';
 
 	const features = [
 		{
@@ -60,6 +61,8 @@
 	];
 
 	const { transition } = setupViewTransition();
+
+	const handleBackgroundImage = `url('data:image/svg+xml;utf8,<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 12H21M3 12L7 8M3 12L7 16M21 12L17 16M21 12L17 8" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>')`;
 </script>
 
 <svelte:head>
@@ -84,8 +87,30 @@
 		</div>
 	</header>
 
-	<section class="mx-auto px-4 pb-32 pt-16 lg:container md:px-6 lg:px-8">
-		<div class="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+	<section
+		class="mx-auto flex flex-wrap items-start gap-8 px-4 pb-32 pt-16 lg:container md:px-6 lg:px-8"
+	>
+		<div class="rounded lg:w-1/2">
+			<CompareImage
+				imageLeftSrc="/before.jpg"
+				imageLeftAlt="left"
+				imageRightSrc="/after.png"
+				imageRightAlt="right"
+				--handle-size="2.5rem"
+				--handle-background-color="rgba(0, 0, 0, 0.6)"
+				--handle-background-image={handleBackgroundImage}
+				--handle-border-width="0.125rem"
+				--slider-color="#ffffff"
+				--slider-width="0.125rem"
+			>
+				<svelte:fragment slot="slider-label">
+					Set the visibility of one image over the other. 0 is full visibility of the second image
+					and 100 is full visibility of the first image. Any amount in-between is a left/right
+					cutoff at the percentage of the slider.
+				</svelte:fragment>
+			</CompareImage>
+		</div>
+		<div class="grid gap-8 md:grid-cols-2 lg:w-1/2">
 			{#each features as feature}
 				<div
 					class="rounded-xl bg-surface-100 p-10 shadow-lg transition duration-300 hover:bg-surface-200 dark:bg-surface-800 hover:dark:bg-surface-700"
