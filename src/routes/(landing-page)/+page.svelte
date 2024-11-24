@@ -2,6 +2,7 @@
 	import { setupViewTransition } from 'sveltekit-view-transition';
 	import { Accordion, AccordionItem } from '@skeletonlabs/skeleton';
 	import CompareImage from '$lib/components/compare-image.svelte';
+	import Icon from '@iconify/svelte';
 
 	const features = [
 		{
@@ -104,12 +105,12 @@
 				--slider-width="0.125rem"
 			/>
 		</div>
-		<div class="grid place-content-around gap-8 md:grid-cols-2 lg:w-1/2">
+		<div class="grid gap-8 md:grid-cols-2 lg:w-1/2">
 			{#each features as feature}
 				<div
 					class="space-y-2 rounded-xl bg-surface-100 p-10 shadow-lg transition duration-300 hover:bg-surface-200 dark:bg-surface-800 hover:dark:bg-surface-700"
 				>
-					<iconify-icon icon={feature.icon} width="3rem" class="text-emerald-500"></iconify-icon>
+					<Icon icon={feature.icon} width="3rem" class="text-emerald-500" />
 					<h3 class="text-xl font-semibold">{feature.title}</h3>
 					<p class="text-gray-600 dark:text-gray-400">{feature.description}</p>
 				</div>
@@ -123,16 +124,12 @@
 			<div class="grid gap-8 md:grid-cols-3">
 				{#each caraKerja as cara, i}
 					<div
-						class="rounded-xl bg-surface-100 px-2 py-8 text-center shadow-lg transition duration-300 hover:bg-surface-200 dark:bg-surface-800 hover:dark:bg-surface-700"
+						class="rounded-xl bg-surface-100 px-4 py-8 text-center shadow-lg transition duration-300 hover:bg-surface-200 dark:bg-surface-800 hover:dark:bg-surface-700"
 					>
 						<div
 							class="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-emerald-500"
 						>
-							<iconify-icon
-								icon={cara.icon}
-								width="2rem"
-								class="text-emerald-100 dark:text-emerald-800"
-							></iconify-icon>
+							<Icon icon={cara.icon} width="2rem" class="text-emerald-100 dark:text-emerald-800" />
 						</div>
 						<h3 class="mb-2 font-semibold">{i + 1}. {cara.title}</h3>
 						<p class="text-gray-600 dark:text-gray-400">{cara.description}</p>
