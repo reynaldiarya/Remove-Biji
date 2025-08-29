@@ -1,38 +1,68 @@
-# sv
+# Remove Biji
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+Remove Biji is a background removal web application built with SvelteKit that allows users to easily remove backgrounds from images.
 
-## Creating a project
+## Features
 
-If you're seeing this, you've probably already done this step. Congrats!
+- Instant processing
+- High quality output
+- Google OAuth authentication
+- Credits system
+- Free tier with 3 credits per day
+- Light/dark theme
+- Responsive design
+- SEO optimized
 
-```bash
-# create a new project in the current directory
-npx sv create
+## Tech Stack
 
-# create a new project in my-app
-npx sv create my-app
+- SvelteKit
+- TypeScript
+- Tailwind CSS
+- Skeleton UI
+- Drizzle ORM
+- MySQL
+
+## Environment Variables
+
+Create a `.env` file with the following variables:
+
+```env
+DATABASE_URL=
+TRIPAY_API_KEY=
+TRIPAY_PRIVATE_KEY=
+TRIPAY_MERCHANT_CODE=
+GOOGLE_CLIENT_ID=
+GOOGLE_CLIENT_SECRET=
 ```
 
-## Developing
+## Installation
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/reynaldiarya/Remove-Biji
+   cd Remove-Biji
+   ```
 
-```bash
-npm run dev
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+3. **Run database migrations:**
+   ```bash
+   npm run db:push
+   npm run db:migrate
+   ```
 
-## Building
+4. **Start development server:**
+   ```bash
+   npm run dev
+   ```
 
-To create a production version of your app:
+## Contributing
 
-```bash
-npm run build
-```
+Contributions are welcome! Please feel free to submit a Pull Request.
 
-You can preview the production build with `npm run preview`.
+## Credits
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+Created by [tfkhdyt](https://github.com/tfkhdyt)
