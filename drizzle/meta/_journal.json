@@ -5,50 +5,8 @@
     {
       "idx": 0,
       "version": "7",
-      "when": 1731838338416,
-      "tag": "0000_burly_colonel_america",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "7",
-      "when": 1731838510220,
-      "tag": "0001_little_mercury",
-      "breakpoints": true
-    },
-    {
-      "idx": 2,
-      "version": "7",
-      "when": 1731923769234,
-      "tag": "0002_smiling_sphinx",
-      "breakpoints": true
-    },
-    {
-      "idx": 3,
-      "version": "7",
-      "when": 1731978302985,
-      "tag": "0003_high_quasar",
-      "breakpoints": true
-    },
-    {
-      "idx": 4,
-      "version": "7",
-      "when": 1731979053822,
-      "tag": "0004_clammy_prowler",
-      "breakpoints": true
-    },
-    {
-      "idx": 5,
-      "version": "7",
-      "when": 1731981368729,
-      "tag": "0005_puzzling_vampiro",
-      "breakpoints": true
-    },
-    {
-      "idx": 6,
-      "version": "7",
-      "when": 1731984952998,
-      "tag": "0006_stale_purple_man",
+      "when": 1756433344294,
+      "tag": "0000_great_spot",
       "breakpoints": true
     }
   ]

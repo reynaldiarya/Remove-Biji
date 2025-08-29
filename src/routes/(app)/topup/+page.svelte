@@ -5,7 +5,7 @@
 	import BuyIcon from '$lib/icons/buy-icon.svelte';
 	import { formatRupiah } from '$lib/utils';
 	import clsx from 'clsx';
-	import toast from 'svelte-french-toast';
+	import toast from 'svelte-5-french-toast';
 	import SvelteSeo from 'svelte-seo';
 	import { superForm } from 'sveltekit-superforms';
 	import type { PageData } from './$types';

@@ -9,7 +9,7 @@
 	import '@fontsource/roboto/900.css';
 	import { storePopup } from '@skeletonlabs/skeleton';
 	import type { Snippet } from 'svelte';
-	import { Toaster } from 'svelte-french-toast';
+	import { Toaster } from 'svelte-5-french-toast';
 	import SvelteSeo from 'svelte-seo';
 	import { setupViewTransition } from 'sveltekit-view-transition';
 	import '../app.css';

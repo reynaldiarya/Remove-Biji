@@ -8,7 +8,7 @@
 	import FileDropzone from '../file-dropzone.svelte';
 	import ResetIcon from '$lib/icons/reset-icon.svelte';
 	import { removeBg } from '$lib/remove-bg';
-	import toast from 'svelte-french-toast';
+	import toast from 'svelte-5-french-toast';
 	import { z } from 'zod';
 	import BgReplaceIcon from '$lib/icons/bg-replace-icon.svelte';
 	import { withCatch } from '@tfkhdyt/with-catch';

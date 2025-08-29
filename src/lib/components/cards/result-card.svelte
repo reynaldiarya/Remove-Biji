@@ -10,7 +10,7 @@
 	import { fade } from 'svelte/transition';
 	import { v4 as uuidv4 } from 'uuid';
 	import { withCatch } from '@tfkhdyt/with-catch';
-	import toast from 'svelte-french-toast';
+	import toast from 'svelte-5-french-toast';
 
 	type Props = {
 		outputs: Blob[];

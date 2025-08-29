@@ -4,7 +4,10 @@ CREATE TABLE IF NOT EXISTS "invoices" (
 	"status" varchar DEFAULT 'UNPAID' NOT NULL,
 	"expired_time" timestamp with time zone NOT NULL,
 	"package" integer NOT NULL,
-	"amount" integer NOT NULL
+	"amount" integer NOT NULL,
+	"paid_at" timestamp with time zone,
+	"created_at" timestamp with time zone DEFAULT now(),
+	"checkout_url" text,
 );
 --> statement-breakpoint
 DO $$ BEGIN
