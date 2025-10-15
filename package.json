@@ -62,7 +62,7 @@
 		"svelte-5-french-toast": "^2.0.6",
 		"svelte-seo": "^1.6.1",
 		"sveltekit-rate-limiter": "^0.7.0",
-		"sveltekit-superforms": "^2.27.1",
+		"sveltekit-superforms": "^2.27.4",
 		"sveltekit-view-transition": "^0.5.3",
 		"ts-pattern": "^5.8.0",
 		"uuid": "^11.1.0",
