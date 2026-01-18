@@ -66,6 +66,6 @@
 		"sveltekit-view-transition": "^0.5.3",
 		"ts-pattern": "^5.8.0",
 		"uuid": "^11.1.0",
-		"zod": "^4.1.13"
+		"zod": "^4.2.0"
 	}
 }
